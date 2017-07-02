@@ -3,8 +3,70 @@
   
     
     <entry>
+      <title><![CDATA[git的学习记录]]></title>
+      <url>/2016/04/03/git/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>创建、添加、提交</p>
+</blockquote>
+<pre><code>git init  //创建版本库，需要注意的是，将目录切换你希望的文件夹里面进行创建
+
+git add */文件名 // 后面写需要添加的文件名，*代表所有的
+
+git commit -m &quot;提交说明&quot; //把添加的文件提交到仓库 （这个就相当于玩游戏时候存档功能）
+总结：当文件假被创建仓库初始化之后，该文件夹就是一个工作区，而在其中会多出一个.git文件夹 他是git的版本库，在git的版本库中，有着非常重要的 暂存区（index）,还有git会为我们自动创建的一个分支master,以及指向master的一个指针HEAD。放我们 git add 的时候，就是相当于把文件修改添加到了暂存区，然后 git commit 就是把暂存区的内容提交到了当前的分支。
+</code></pre><a id="more"></a>
+<blockquote>
+<p>时光穿梭（查看、管理修改、撤销修改）</p>
+</blockquote>
+<pre><code>git status //查看仓库的当前状态 （查看哪些文件被修改过）
+
+git diff //查看还没有暂存的文件更新了哪些部分  （查看文件被修改了哪些内容）
+
+git log //查看历史提交记录 如果嫌输出的信息太多，可以加上参数 --pretty=oneline
+
+git reset --hard commit_id //版本退回
+    1. 在版本退回前，可以先 git log 查看版本的历史，以便确定要退回到哪个版本
+    2. 要重返未来，用 git reflog 查看命令历史，找到要回到未来的哪个版本
+
+git checkout -- fileName //把文件在工作区的修改全部撤销，有两种情况：
+    1.    修改后还没有add到暂存区，那么撤销后回到了和版本库一模一样的状态
+    2. 已经add到了暂存区，撤销修改回到添加到暂存区后的状态。
+    总结：就是让文件回到最近一次git commit 或者 git add时的状态。
+    git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
+
+git reset HEAD filename //可以撤销暂存区的修改，重新放回工作区。
+
+    撤销修改应用场景：
+        场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
+        场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
+        场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
+
+    git rm //删除版本库中的文件
+</code></pre><blockquote>
+<p>远程仓库</p>
+</blockquote>
+<pre><code>1.    添加远程仓库
+
+    第1步：创建SSH Key 
+        ssh-keygen -t rsa -C &quot;GitHub注册时候的邮箱&quot;
+
+    第2步：在本地仓库的目录下关联远程仓库
+        git remote add origin git@github.com:github上的用户名/仓库名.git
+
+    第3步：把本地仓库的所有内容推送到远程仓库上
+        git push -u origin master //第一次推送时候加上-u 后面再推送就不用了 Git会把我们本地的master分支和远程仓库上的分支关联起来
+
+2.    克隆远程仓库 
+
+    git clone git@github.com:用户名/仓库名.git 
+</code></pre>]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[基于Hexo和Github的博客]]></title>
-      <url>/2015/07/05/Hexo/</url>
+      <url>/2016/03/05/Hexo/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>安装</p>
 </blockquote>
@@ -34,21 +96,25 @@ sudo npm install hexo-server
 
 hexo server //可简写为 hexo s
 
-然后就是见证奇迹的时刻，在浏览器中输入 http://localhost:4000/ 。就可以看到啦！激动...但是.....到这里你的博客还只能自己看到。别人看不到啊，怎么办？？？ 接着往下看...
+然后就是见证奇迹的时刻，在浏览器中输入 http://localhost:4000/ 。就可以看到啦！激动...
+但是.....到这里你的博客还只能自己看到。别人看不到啊，怎么办？？？ 接着往下看...
 </code></pre><blockquote>
 <p>配置Github </p>
 </blockquote>
 <pre><code>因为我是先研究的Github再研究的Hexo,所有Github早已经配置好啦，大概是这样的
 
-    1.    新建一个仓库 这里要注意的是 新建仓库的名字必须是 你的用户名.github.io 
+    1. 新建一个仓库 这里要注意的是 新建仓库的名字必须是 你的用户名.github.io 
     2. 在刚才安装Hexo的文件夹下找到_config.yml文件，我们要对他进行修改了。（马上就可以让别人看到你的博客啦！）
     3. 用编辑器打开这个文件 拉到最下面进行修改(注意啊，每个冒号后面都有一个空格，别踩坑！)
+
+
     deploy:
        type: git
          repository: 这里填写你的Github仓库地址（去你Github那里直接复制过来）
           branch: master
           （文件的其他参数，我后面有写，先不要急！）
-      4.    执行： 
+
+      4. 执行： 
       npm install hexo-deployer-git --save
       5. 执行部署（就跟项目上线差不多，执行了别人就能看到了，想好有没有BUG啊)
       hexo deploy
@@ -58,12 +124,12 @@ hexo server //可简写为 hexo s
 <p>总结一下：</p>
 </blockquote>
 <pre><code>每次对主题、文件等就行了修改，需要三步才能让你的博客让别人看到
-    1.    hexo clean 
+    1. hexo clean 
     2. hexo generate
     3. hexo deploy
 
 要是感觉单词长 就这样写：
-    1.    hexo clean
+    1. hexo clean
     2. hexo g -d
 
 突然想起来，每次发布完，你会发现终端不能输入命令了！（反正我的是这样的），按control+z 
@@ -79,7 +145,8 @@ hexo server //可简写为 hexo s
     hexo help  #查看帮助
     hexo version  #查看Hexo的版本
 
-创建的文章，在source/_posts下，后缀是md，哦对了！这里面那个Hello什么什么.md那个文件可以删了，看到就想起来当初看java的时候，配置完环境，第一条输入的hello world！！
+创建的文章，在source/_posts下，后缀是md，哦对了！这里面那个Helloworld.md那个文件可以删了,
+看到就想起来当初看java的时候，配置完环境，第一条输入的hello world！！
 </code></pre><blockquote>
 <p>_config.yml 文件的一些参数说明</p>
 </blockquote>
@@ -88,7 +155,8 @@ subtitle 网站的副标题
 description 网站的描述
 author 你的名字
 language 网站的语言。使用2-lettter ISO-639-1代码。默认是en。（有填写规范的，别乱写）
-timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在这里找到可用的时区列表。一些例子是America/New_York，Japan和UTC。 （同上）
+timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在这里找到可用的时区列表。一些例子
+是America/New_York，Japan和UTC。 （同上）
 </code></pre>]]></content>
       
         
