@@ -15,16 +15,17 @@
 
 
 
-<meta name="description" content="安装  安装Hexo需要Node.js和git，有这两个之后直接用命令行安装Hexo  sudo npm install -g hexo">
+<meta name="description" content="写在前面：    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！">
+<meta name="keywords" content="hexo,Github">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于Hexo和Github的博客">
 <meta property="og:url" content="http://yoursite.com/2016/03/05/Hexo/index.html">
 <meta property="og:site_name" content="杨洋洋的个人博客">
-<meta property="og:description" content="安装  安装Hexo需要Node.js和git，有这两个之后直接用命令行安装Hexo  sudo npm install -g hexo">
-<meta property="og:updated_time" content="2017-07-02T16:28:57.000Z">
+<meta property="og:description" content="写在前面：    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！">
+<meta property="og:updated_time" content="2017-07-04T12:10:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Hexo和Github的博客">
-<meta name="twitter:description" content="安装  安装Hexo需要Node.js和git，有这两个之后直接用命令行安装Hexo  sudo npm install -g hexo">
+<meta name="twitter:description" content="写在前面：    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -183,7 +184,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Github/">Github</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Ngrok/">Ngrok</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/apache/">apache</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/git/">git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
                     </div>
                 </section>
                 
@@ -289,6 +290,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -296,17 +301,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
+        <p><strong>写在前面：</strong><br>    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！</p>
+<a id="more"></a>
+<blockquote>
 <p>安装</p>
 </blockquote>
 <pre><code>安装Hexo需要Node.js和git，有这两个之后直接用命令行安装Hexo
 
 sudo npm install -g hexo
-</code></pre><a id="more"></a>
-<blockquote>
+</code></pre><blockquote>
 <p>初始化</p>
 </blockquote>
-<pre><code>创建一个文件夹 在命令行中将目录定位在该文件夹中，输入下面的命令（注意啊，目录一定搞清楚，也就是你命令行前面显示的文件夹）：
+<pre><code>创建一个文件夹 在命令行中将目录定位在该文件夹中，输入下面的命令（注意啊，目录一定搞清楚）：
 
 hexo init //初始化
 npm install
@@ -324,6 +330,14 @@ sudo npm install hexo-server
 本地启动：
 
 hexo server //可简写为 hexo s
+
+如果执行上面发现出错，很有可能是4000端口被占用了，我们可以修改默认的端口
+在_config.yml文件最后添加下面这几段代码
+
+server:
+      port: 4000
+      compress: true
+      header: true
 
 然后就是见证奇迹的时刻，在浏览器中输入 http://localhost:4000/ 。就可以看到啦！激动...
 但是.....到这里你的博客还只能自己看到。别人看不到啊，怎么办？？？ 接着往下看...
@@ -358,7 +372,7 @@ hexo server //可简写为 hexo s
     3. hexo deploy
 
 要是感觉单词长 就这样写：
-    1. hexo clean
+    1. hexo c
     2. hexo g -d
 
 突然想起来，每次发布完，你会发现终端不能输入命令了！（反正我的是这样的），按control+z 
@@ -398,8 +412,8 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/04/03/git/">
-                    git的学习记录
+                <a href="/2016/03/22/Ngrok-apache/">
+                    Ngrok_apache
                 </a>
             </div>
         
@@ -468,7 +482,7 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/04/03/git/" title="上一篇: git的学习记录">
+            <a href="/2016/03/22/Ngrok-apache/" title="上一篇: Ngrok_apache">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -480,7 +494,7 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/git/">git的学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/05/Hexo/">基于Hexo和Github的博客</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/git/">git的学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/22/Ngrok-apache/">Ngrok_apache</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/05/Hexo/">基于Hexo和Github的博客</a></li></ul>
 
 
 

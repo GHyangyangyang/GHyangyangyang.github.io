@@ -5,17 +5,17 @@
     <entry>
       <title><![CDATA[git的学习记录]]></title>
       <url>/2016/04/03/git/</url>
-      <content type="html"><![CDATA[<blockquote>
+      <content type="html"><![CDATA[<p><strong>写在前面：</strong><br>    git的由来，故事非常有意思，感兴趣的可以自行百度一下。自从用了git来进行版本的控制，工作方便了很多，再也不怕代码改乱了，这里记录我学习git从零开始到基本掌握的笔记。因为之前的笔记都是本子上，txt上随笔，所以整理起来比较慢，会一点一点的跟新上来！<br><a id="more"></a></p>
+<blockquote>
 <p>创建、添加、提交</p>
 </blockquote>
-<pre><code>git init  //创建版本库，需要注意的是，将目录切换你希望的文件夹里面进行创建
+<pre><code>git init  #创建版本库，需要注意的是，将目录切换你希望的文件夹里面进行创建
 
-git add */文件名 // 后面写需要添加的文件名，*代表所有的
+git add * # 后面写需要添加的文件名，*代表所有的
 
 git commit -m &quot;提交说明&quot; //把添加的文件提交到仓库 （这个就相当于玩游戏时候存档功能）
-总结：当文件假被创建仓库初始化之后，该文件夹就是一个工作区，而在其中会多出一个.git文件夹 他是git的版本库，在git的版本库中，有着非常重要的 暂存区（index）,还有git会为我们自动创建的一个分支master,以及指向master的一个指针HEAD。放我们 git add 的时候，就是相当于把文件修改添加到了暂存区，然后 git commit 就是把暂存区的内容提交到了当前的分支。
-</code></pre><a id="more"></a>
-<blockquote>
+总结：当文件夹被创建仓库初始化之后，该文件夹就是一个工作区，而在其中会多出一个.git文件夹 他是git的版本库，在git的版本库中，有着非常重要的 暂存区（index）,还有git会为我们自动创建的一个分支master,以及指向master的一个指针HEAD。当我们 git add 的时候，就是相当于把文件修改添加到了暂存区，然后 git commit -m &quot;XXX&quot; 就是把暂存区的内容提交到了当前的分支。
+</code></pre><blockquote>
 <p>时光穿梭（查看、管理修改、撤销修改）</p>
 </blockquote>
 <pre><code>git status //查看仓库的当前状态 （查看哪些文件被修改过）
@@ -62,22 +62,69 @@ git reset HEAD filename //可以撤销暂存区的修改，重新放回工作区
 </code></pre>]]></content>
       
         
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Ngrok_apache]]></title>
+      <url>/2016/03/22/Ngrok-apache/</url>
+      <content type="html"><![CDATA[<p><strong>写在前面</strong>：<br>    在做移动端项目的时候，需要通过手机来访问电脑上本地的项目，同时让不在同一个局域网的其他设备也可以访问，来同时调试项目，下面这两个配合使用，就可以完美解决这个问题。</p>
+<a id="more"></a>
+<hr>
+<h3 id="Ngrok"><a href="#Ngrok" class="headerlink" title="Ngrok"></a>Ngrok</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Ngrok的使用相对简单，我使用的是 Sunny-Ngrok </div><div class="line"></div><div class="line">使用方法：</div><div class="line"></div><div class="line">	1. 去官网注册一个账号，开通一条免费的隧道</div><div class="line">	2. 根据官网的教程填写相应的东西</div><div class="line">	3. 下载安装Sunny</div><div class="line">	4. 需要注意的是，映射的端口号默认的是80 个人建议进行修改。例如：8080、8081.</div><div class="line">	</div><div class="line">启动：</div><div class="line"></div><div class="line">	注意，启动隧道需要 cd 到安装的ngrok的目录下</div><div class="line">	启动隧道</div><div class="line">	./sunny clientid 隧道id</div><div class="line">	</div><div class="line">	启动多个隧道</div><div class="line">	./sunny clientid c7fb2defb4081919,3e23d14f040b2b12</div></pre></td></tr></table></figure>
+<h3 id="Mac-apache"><a href="#Mac-apache" class="headerlink" title="Mac apache"></a>Mac apache</h3><hr>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">1. 基本操作</div><div class="line"></div><div class="line">	MAC自带了apache，所有可以直接用</div><div class="line">	httpd -v #查看Apache版本信息</div><div class="line">	sudo apachectl start #启动</div><div class="line">	sudo apachectl stop #停止</div><div class="line">	sudo apachectl restart #重启</div><div class="line"></div><div class="line">注意：每次修改完东西，都需要重新启动apache</div><div class="line">Apache 就启动成功，站点的根目录为系统级根目录 /Library/WebServer/Documents</div><div class="line"></div><div class="line">2. 创建用户级根目录管理起来更加方便</div><div class="line">	1. 创建一个文件夹Sites</div><div class="line">	2. 查看etc/apache2/users 下是否有 username.conf文件，注意username就是你的用户名,如果没有就创建一个.</div><div class="line">	（ps: 我第一次就创建成了username.conf文件！尴尬，现在都没改过来，懒的改了）</div><div class="line">	</div><div class="line">	3. 创建完成后打开，把下面的配置信息扔进去</div><div class="line">	</div><div class="line">		 &lt;Directory &quot;/Users/yangyangyang注意这里是你的用户名/Sites/&quot;&gt;</div><div class="line">		     Options Indexes MultiViews FollowSymLinks</div><div class="line">		     AllowOverride All</div><div class="line">		     Order allow,deny</div><div class="line">		     Allow from all</div><div class="line">		     Require all granted</div><div class="line">		 &lt;/Directory&gt;</div><div class="line">		</div><div class="line">	4. 编辑 /etc/apache2/httpd.conf 文件，找到下列代码，并将前面的注释符号 # 删除：</div><div class="line"></div><div class="line">	     Include /private/etc/apache2/extra/httpd-userdir.conf</div><div class="line">	     LoadModule userdir_module libexec/apache2/mod_userdir.so</div><div class="line">	     </div><div class="line">	5. 编辑 /etc/apache2/extra/httpd-userdir.conf 文件，找到下列代码，并将前面的注释符号 # 删除：</div><div class="line">	</div><div class="line">      Include /private/etc/apache2/users/*.conf</div></pre></td></tr></table></figure>
+<h3 id="etc-apache2-httpd-conf文件的一些参数"><a href="#etc-apache2-httpd-conf文件的一些参数" class="headerlink" title="/etc/apache2/httpd.conf文件的一些参数"></a>/etc/apache2/httpd.conf文件的一些参数</h3><hr>
+<pre><code>
+上面完成后，启动Apache，然后打开Ngrok,输入Ngrok上面产生的网址，查看是否会跳转到你修改的根目录下，如果没有，只需要修改下面的DocumentRoot 后面改成你指定网站的根目录就可以了！ 
+
+&lt;VirtualHost *:80&gt;
+         DocumentRoot &quot;/path&quot; #这里指定你的网站根目录 
+         ServerName example.com
+         ErrorLog &quot;/private/var/log/apache2/sites-error_log&quot;
+         CustomLog &quot;/private/var/log/apache2/sites-access_log&quot; common
+         &lt;Directory /&gt;
+                 Options Indexes FollowSymLinks MultiViews
+                 AllowOverride All
+                 #Order deny,allow
+                 #Allow from all
+                 Require all granted
+         &lt;/Directory&gt;
+&lt;/VirtualHost&gt;
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> Ngrok </tag>
+            
+            <tag> apache </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
       <title><![CDATA[基于Hexo和Github的博客]]></title>
       <url>/2016/03/05/Hexo/</url>
-      <content type="html"><![CDATA[<blockquote>
+      <content type="html"><![CDATA[<p><strong>写在前面：</strong><br>    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！</p>
+<a id="more"></a>
+<blockquote>
 <p>安装</p>
 </blockquote>
 <pre><code>安装Hexo需要Node.js和git，有这两个之后直接用命令行安装Hexo
 
 sudo npm install -g hexo
-</code></pre><a id="more"></a>
-<blockquote>
+</code></pre><blockquote>
 <p>初始化</p>
 </blockquote>
-<pre><code>创建一个文件夹 在命令行中将目录定位在该文件夹中，输入下面的命令（注意啊，目录一定搞清楚，也就是你命令行前面显示的文件夹）：
+<pre><code>创建一个文件夹 在命令行中将目录定位在该文件夹中，输入下面的命令（注意啊，目录一定搞清楚）：
 
 hexo init //初始化
 npm install
@@ -95,6 +142,14 @@ sudo npm install hexo-server
 本地启动：
 
 hexo server //可简写为 hexo s
+
+如果执行上面发现出错，很有可能是4000端口被占用了，我们可以修改默认的端口
+在_config.yml文件最后添加下面这几段代码
+
+server:
+      port: 4000
+      compress: true
+      header: true
 
 然后就是见证奇迹的时刻，在浏览器中输入 http://localhost:4000/ 。就可以看到啦！激动...
 但是.....到这里你的博客还只能自己看到。别人看不到啊，怎么办？？？ 接着往下看...
@@ -129,7 +184,7 @@ hexo server //可简写为 hexo s
     3. hexo deploy
 
 要是感觉单词长 就这样写：
-    1. hexo clean
+    1. hexo c
     2. hexo g -d
 
 突然想起来，每次发布完，你会发现终端不能输入命令了！（反正我的是这样的），按control+z 
@@ -159,6 +214,14 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
 是America/New_York，Japan和UTC。 （同上）
 </code></pre>]]></content>
       
+        
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> Github </tag>
+            
+        </tags>
         
     </entry>
     
