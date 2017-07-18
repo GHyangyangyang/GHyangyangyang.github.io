@@ -3,6 +3,116 @@
   
     
     <entry>
+      <title><![CDATA[FileReader接口]]></title>
+      <url>/2016/06/06/HTML5%E7%9A%84FileReader%E6%8E%A5%E5%8F%A3/</url>
+      <content type="html"><![CDATA[<h3 id="HTML5的FileReader接口"><a href="#HTML5的FileReader接口" class="headerlink" title="HTML5的FileReader接口"></a><center>HTML5的FileReader接口</center></h3><hr>
+<p>用来把文件读入内存，并且读取文件中的数据。FileReader接口提供了一个异步API，使用该API可以在浏览器主线程中异步访问文件系统，读取文件中的数据。</p>
+<a id="more"></a>
+<h4 id="1-FileReader接口的方法"><a href="#1-FileReader接口的方法" class="headerlink" title="1. FileReader接口的方法"></a>1. FileReader接口的方法</h4><pre><code>FileReader接口有4个方法，其中3个用来读取文件，另一个用来中断读取。无论读取成功或失败，方法并不会返回读取的结果，这一结果保存在result属性中。
+</code></pre><table>
+<thead>
+<tr>
+<th>方法名</th>
+<th>参数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>readAsBingaryString</td>
+<td>file</td>
+<td>将文件读取为二进制编码</td>
+</tr>
+<tr>
+<td>readAsText</td>
+<td>file,[encoding]</td>
+<td>将文件读取为文本</td>
+</tr>
+<tr>
+<td>readAsDataURL</td>
+<td>file</td>
+<td>将文件读取为DataURL</td>
+</tr>
+<tr>
+<td>abort</td>
+<td>(none)</td>
+<td>中断读取操作</td>
+</tr>
+</tbody>
+</table>
+<h4 id="2-FileReader接口的事件"><a href="#2-FileReader接口的事件" class="headerlink" title="2. FileReader接口的事件"></a>2. FileReader接口的事件</h4><p>FileReader接口包含了一整套完整的事件模型，用于捕获读取文件时的状态</p>
+<table>
+<thead>
+<tr>
+<th>事件</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>onabort</td>
+<td>中断</td>
+</tr>
+<tr>
+<td>onerror</td>
+<td>出错</td>
+</tr>
+<tr>
+<td>onloadstart</td>
+<td>开始</td>
+</tr>
+<tr>
+<td>onprogress</td>
+<td>正在读取</td>
+</tr>
+<tr>
+<td>onload</td>
+<td><strong>成功获取</strong></td>
+</tr>
+<tr>
+<td>onloadend</td>
+<td><strong>读取完成，无论成功失败</strong></td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;input type=&quot;file&quot; id=&quot;file /&quot;&gt;</div><div class="line">&lt;input type=&quot;button&quot; value=&quot;读取图像&quot; onclick=&quot;readAsDataURL()&quot; /&gt; </div><div class="line">&lt;input type=&quot;button&quot; value=&quot;读取二进制数据&quot; onclick=&quot;readAsBinaryString()&quot; /&gt; </div><div class="line">&lt;input type=&quot;button&quot; value=&quot;读取文本文件&quot; onclick=&quot;readAsText()&quot; /&gt;</div><div class="line"></div><div class="line">&lt;div id=&quot;result&quot; name=&quot;result&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line"></div><div class="line">var result=document.getElementById(&quot;result&quot;);  </div><div class="line">var file=document.getElementById(&quot;file&quot;); </div><div class="line"></div><div class="line">//判断浏览器是否支持FileReader接口  </div><div class="line">if(typeof FileReader == &apos;undefined&apos;)&#123;  </div><div class="line">	result.InnerHTML=&quot;&lt;p&gt;你的浏览器不支持FileReader接口！&lt;/p&gt;&quot;;  </div><div class="line">	//使选择控件不可操作  </div><div class="line">	file.setAttribute(&quot;disabled&quot;,&quot;disabled&quot;);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line"></div><div class="line">// readAsDataURL</div><div class="line"></div><div class="line">function readAsDataURL()&#123;  </div><div class="line">	//检验是否为图像文件  </div><div class="line">	var file = document.getElementById(&quot;file&quot;).files[0];  </div><div class="line">	if(!/image\/\w+/.test(file.type))&#123;  </div><div class="line">			alert(&quot;上传的不是图片&quot;);  </div><div class="line">		   return false;  </div><div class="line">	 &#125;  </div><div class="line">	 </div><div class="line">	var reader = new FileReader();  </div><div class="line">	//将文件以Data URL形式读入页面  </div><div class="line">	reader.readAsDataURL(file);  </div><div class="line">	reader.onload=function(e)&#123;  </div><div class="line">			var result=document.getElementById(&quot;result&quot;);  </div><div class="line">			//显示文件  </div><div class="line">			 result.innerHTML=&apos;&lt;img src=&quot;&apos; + this.result +&apos;&quot; alt=&quot;&quot; /&gt;&apos;;  </div><div class="line">		 &#125;  </div><div class="line">	&#125;  </div><div class="line"></div><div class="line"></div><div class="line">// readAsBinaryString</div><div class="line"></div><div class="line">function readAsBinaryString()&#123;  </div><div class="line">		var file = document.getElementById(&quot;file&quot;).files[0];  </div><div class="line">		var reader = new FileReader();  </div><div class="line">		//将文件以二进制形式读入页面  </div><div class="line">		reader.readAsBinaryString(file);  </div><div class="line">		reader.onload=function(f)&#123;  </div><div class="line">		var result=document.getElementById(&quot;result&quot;);  </div><div class="line">			//显示文件  </div><div class="line">			result.innerHTML=this.result;  </div><div class="line">		&#125;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line"></div><div class="line">// readAsText</div><div class="line"></div><div class="line">function readAsText()&#123;  </div><div class="line">		var file = document.getElementById(&quot;file&quot;).files[0];  </div><div class="line">		var reader = new FileReader();  </div><div class="line">		//将文件以文本形式读入页面  </div><div class="line">		reader.readAsText(file);  </div><div class="line">		reader.onload=function(f)&#123;  </div><div class="line">				var result=document.getElementById(&quot;result&quot;);  </div><div class="line">				//显示文件  </div><div class="line">				result.innerHTML=this.result;  </div><div class="line">		 &#125;  </div><div class="line">	&#125;  </div><div class="line"></div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> FileReader接口 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[XMLHttpRequest上传文件实现进度条]]></title>
+      <url>/2016/06/06/XMLHttpRequest%E4%B8%8A%E4%BC%A0%E6%96%87%E4%BB%B6%E5%AE%9E%E7%8E%B0%E8%BF%9B%E5%BA%A6%E6%9D%A1/</url>
+      <content type="html"><![CDATA[<h3 id="XMLHttpRequest上传文件实现进度条"><a href="#XMLHttpRequest上传文件实现进度条" class="headerlink" title="XMLHttpRequest上传文件实现进度条"></a><center>XMLHttpRequest上传文件实现进度条</center></h3><hr>
+<p>XMLHttpRequest对象，传送数据的时候，有一个progress事件，用来返回进度信息。它分成上传和下载两种情况<br>１. 下载的progress事件属于XMLHttpRequest对象<br>２. 上传的progress事件属于XMLHttpRequest.upload对象。<br><a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;XMLHttpRequest上传文件进度实现&lt;/title&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">        var xhr;</div><div class="line">        var ot;//</div><div class="line">        var oloaded;</div><div class="line">        //上传文件方法</div><div class="line">        function UpladFile() &#123;</div><div class="line">            var fileObj = document.getElementById(&quot;file&quot;).files[0]; // js 获取文件对象</div><div class="line">            var url = &quot;uploadFile&quot;; // 接收上传文件的后台地址 </div><div class="line">            </div><div class="line">            var form = new FormData(); // FormData 对象</div><div class="line">            form.append(&quot;mf&quot;, fileObj); // 文件对象</div><div class="line">            </div><div class="line">            xhr = new XMLHttpRequest();  // XMLHttpRequest 对象</div><div class="line">            xhr.open(&quot;post&quot;, url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。</div><div class="line">            xhr.onload = uploadComplete; //请求完成</div><div class="line">            xhr.onerror =  uploadFailed; //请求失败</div><div class="line">            xhr.upload.onprogress = progressFunction;//【上传进度调用方法实现】</div><div class="line">            xhr.upload.onloadstart = function()&#123;//上传开始执行方法</div><div class="line">                ot = new Date().getTime();   //设置上传开始时间</div><div class="line">                oloaded = 0;//设置上传开始时，以上传的文件大小为0</div><div class="line">            &#125;;</div><div class="line">            xhr.send(form); //开始上传，发送form数据</div><div class="line">        &#125;</div><div class="line">        //上传进度实现方法，上传过程中会频繁调用该方法</div><div class="line">        function progressFunction(evt) &#123;</div><div class="line">            </div><div class="line">             var progressBar = document.getElementById(&quot;progressBar&quot;);</div><div class="line">             var percentageDiv = document.getElementById(&quot;percentage&quot;);</div><div class="line">             // event.total是需要传输的总字节，event.loaded是已经传输的字节。如果event.lengthComputable不为真，则event.total等于0</div><div class="line">             if (evt.lengthComputable) &#123;//</div><div class="line">                 progressBar.max = evt.total;</div><div class="line">                 progressBar.value = evt.loaded;</div><div class="line">                 percentageDiv.innerHTML = Math.round(evt.loaded / evt.total * 100) + &quot;%&quot;;</div><div class="line">             &#125;</div><div class="line">            </div><div class="line">            var time = document.getElementById(&quot;time&quot;);</div><div class="line">            var nt = new Date().getTime();//获取当前时间</div><div class="line">            var pertime = (nt-ot)/1000; //计算出上次调用该方法时到现在的时间差，单位为s</div><div class="line">            ot = new Date().getTime(); //重新赋值时间，用于下次计算</div><div class="line">            </div><div class="line">            var perload = evt.loaded - oloaded; //计算该分段上传的文件大小，单位b       </div><div class="line">            oloaded = evt.loaded;//重新赋值已上传文件大小，用以下次计算</div><div class="line">        </div><div class="line">            //上传速度计算</div><div class="line">            var speed = perload/pertime;//单位b/s</div><div class="line">            var bspeed = speed;</div><div class="line">            var units = &apos;b/s&apos;;//单位名称</div><div class="line">            if(speed/1024&gt;1)&#123;</div><div class="line">                speed = speed/1024;</div><div class="line">                units = &apos;k/s&apos;;</div><div class="line">            &#125;</div><div class="line">            if(speed/1024&gt;1)&#123;</div><div class="line">                speed = speed/1024;</div><div class="line">                units = &apos;M/s&apos;;</div><div class="line">            &#125;</div><div class="line">            speed = speed.toFixed(1);</div><div class="line">            //剩余时间</div><div class="line">            var resttime = ((evt.total-evt.loaded)/bspeed).toFixed(1);</div><div class="line">            time.innerHTML = &apos;，速度：&apos;+speed+units+&apos;，剩余时间：&apos;+resttime+&apos;s&apos;;</div><div class="line">               if(bspeed==0)</div><div class="line">                time.innerHTML = &apos;上传已取消&apos;;</div><div class="line">        &#125;</div><div class="line">        //上传成功响应</div><div class="line">        function uploadComplete(evt) &#123;</div><div class="line">         //服务断接收完文件返回的结果</div><div class="line">         //    alert(evt.target.responseText);</div><div class="line">             alert(&quot;上传成功！&quot;);</div><div class="line">        &#125;</div><div class="line">        //上传失败</div><div class="line">        function uploadFailed(evt) &#123;</div><div class="line">            alert(&quot;上传失败！&quot;);</div><div class="line">        &#125;</div><div class="line">          //取消上传</div><div class="line">        function cancleUploadFile()&#123;</div><div class="line">            xhr.abort();</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;progress id=&quot;progressBar&quot; value=&quot;0&quot; max=&quot;100&quot; style=&quot;width: 300px;&quot;&gt;&lt;/progress&gt;</div><div class="line">    &lt;span id=&quot;percentage&quot;&gt;&lt;/span&gt;&lt;span id=&quot;time&quot;&gt;&lt;/span&gt;</div><div class="line">    &lt;br /&gt;&lt;br /&gt;</div><div class="line">    &lt;input type=&quot;file&quot; id=&quot;file&quot; name=&quot;myfile&quot; /&gt;</div><div class="line">    &lt;input type=&quot;button&quot; onclick=&quot;UpladFile()&quot; value=&quot;上传&quot; /&gt;</div><div class="line">    &lt;input type=&quot;button&quot; onclick=&quot;cancleUploadFile()&quot; value=&quot;取消&quot; /&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>若想用jQuery 中的ajax实现的话，jQuery的 ajax 方法没有关于 progress 事件的操作，此时需要调用的XMLHttpRequest对象是指定progress 事件。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    type: &quot;POST&quot;,</div><div class="line">　　url: &quot;upload&quot;,</div><div class="line">　　data: formData ,　　//这里上传的数据使用了formData 对象</div><div class="line">　　processData : false, </div><div class="line">　　//必须false才会自动加上正确的Content-Type </div><div class="line">　　contentType : false , </div><div class="line">　　　　</div><div class="line">　　//这里我们先拿到jQuery产生的 XMLHttpRequest对象，为其增加 progress 事件绑定，然后再返回交给ajax使用</div><div class="line">　　xhr: function()&#123;</div><div class="line">　　　　var xhr = $.ajaxSettings.xhr();</div><div class="line">　　　　if(onprogress &amp;&amp; xhr.upload) &#123;</div><div class="line">　　　　　　xhr.upload.onprogress = progressFunction;</div><div class="line"> 　　　　　 return xhr;</div><div class="line"> 　　　 &#125;</div><div class="line"> 　 &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>下载进度条实现</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">xhr.onprogress = downloadProgress;</div><div class="line">function downloadProgress(event) &#123;//未测试</div><div class="line">    if(event.lengthComputable) &#123;</div><div class="line">        var percentComplete = event.loaded / event.total; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> XMLHttpRequest </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[javascript_dom]]></title>
       <url>/2016/04/06/javascript-dom/</url>
       <content type="html"><![CDATA[<p><strong>写在前面:</strong><br>    本来想总结一下javascript的dom，写一些后，发现这篇文章，写的很好！该说的都说到了，自己整理了一下，转载到了这里。</p>

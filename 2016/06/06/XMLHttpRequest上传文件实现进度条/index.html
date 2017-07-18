@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="写在前面：    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！">
-<meta name="keywords" content="hexo,Github">
+<meta name="description" content="XMLHttpRequest上传文件实现进度条 XMLHttpRequest对象，传送数据的时候，有一个progress事件，用来返回进度信息。它分成上传和下载两种情况１. 下载的progress事件属于XMLHttpRequest对象２. 上传的progress事件属于XMLHttpRequest.upload对象。">
+<meta name="keywords" content="XMLHttpRequest">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于Hexo和Github的博客">
-<meta property="og:url" content="http://yoursite.com/2016/03/05/Hexo/index.html">
+<meta property="og:title" content="XMLHttpRequest上传文件实现进度条">
+<meta property="og:url" content="http://yoursite.com/2016/06/06/XMLHttpRequest上传文件实现进度条/index.html">
 <meta property="og:site_name" content="杨洋洋的个人博客">
-<meta property="og:description" content="写在前面：    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！">
-<meta property="og:updated_time" content="2017-07-04T12:13:59.000Z">
+<meta property="og:description" content="XMLHttpRequest上传文件实现进度条 XMLHttpRequest对象，传送数据的时候，有一个progress事件，用来返回进度信息。它分成上传和下载两种情况１. 下载的progress事件属于XMLHttpRequest对象２. 上传的progress事件属于XMLHttpRequest.upload对象。">
+<meta property="og:updated_time" content="2017-07-18T01:26:26.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于Hexo和Github的博客">
-<meta name="twitter:description" content="写在前面：    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！">
+<meta name="twitter:title" content="XMLHttpRequest上传文件实现进度条">
+<meta name="twitter:description" content="XMLHttpRequest上传文件实现进度条 XMLHttpRequest对象，传送数据的时候，有一个progress事件，用来返回进度信息。它分成上传和下载两种情况１. 下载的progress事件属于XMLHttpRequest对象２. 上传的progress事件属于XMLHttpRequest.upload对象。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>基于Hexo和Github的博客 | 杨洋洋的个人博客</title>
+<title>XMLHttpRequest上传文件实现进度条 | 杨洋洋的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -265,11 +265,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Hexo" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-XMLHttpRequest上传文件实现进度条" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/03/05/Hexo/" class="article-date">
-      <time datetime="2016-03-05T12:04:00.000Z" itemprop="datePublished">2016-03-05</time>
+      <a href="/2016/06/06/XMLHttpRequest上传文件实现进度条/" class="article-date">
+      <time datetime="2016-06-06T01:23:11.000Z" itemprop="datePublished">2016-06-06</time>
 </a>
 
 
@@ -284,7 +284,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      基于Hexo和Github的博客
+      XMLHttpRequest上传文件实现进度条
     </h1>
   
 
@@ -295,7 +295,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/XMLHttpRequest/">XMLHttpRequest</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -305,106 +305,18 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong>写在前面：</strong><br>    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！</p>
-<a id="more"></a>
+        <h3 id="XMLHttpRequest上传文件实现进度条"><a href="#XMLHttpRequest上传文件实现进度条" class="headerlink" title="XMLHttpRequest上传文件实现进度条"></a><center>XMLHttpRequest上传文件实现进度条</center></h3><hr>
+<p>XMLHttpRequest对象，传送数据的时候，有一个progress事件，用来返回进度信息。它分成上传和下载两种情况<br>１. 下载的progress事件属于XMLHttpRequest对象<br>２. 上传的progress事件属于XMLHttpRequest.upload对象。<br><a id="more"></a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;XMLHttpRequest上传文件进度实现&lt;/title&gt;</div><div class="line">    &lt;script type=&quot;text/javascript&quot;&gt;</div><div class="line">        var xhr;</div><div class="line">        var ot;//</div><div class="line">        var oloaded;</div><div class="line">        //上传文件方法</div><div class="line">        function UpladFile() &#123;</div><div class="line">            var fileObj = document.getElementById(&quot;file&quot;).files[0]; // js 获取文件对象</div><div class="line">            var url = &quot;uploadFile&quot;; // 接收上传文件的后台地址 </div><div class="line">            </div><div class="line">            var form = new FormData(); // FormData 对象</div><div class="line">            form.append(&quot;mf&quot;, fileObj); // 文件对象</div><div class="line">            </div><div class="line">            xhr = new XMLHttpRequest();  // XMLHttpRequest 对象</div><div class="line">            xhr.open(&quot;post&quot;, url, true); //post方式，url为服务器请求地址，true 该参数规定请求是否异步处理。</div><div class="line">            xhr.onload = uploadComplete; //请求完成</div><div class="line">            xhr.onerror =  uploadFailed; //请求失败</div><div class="line">            xhr.upload.onprogress = progressFunction;//【上传进度调用方法实现】</div><div class="line">            xhr.upload.onloadstart = function()&#123;//上传开始执行方法</div><div class="line">                ot = new Date().getTime();   //设置上传开始时间</div><div class="line">                oloaded = 0;//设置上传开始时，以上传的文件大小为0</div><div class="line">            &#125;;</div><div class="line">            xhr.send(form); //开始上传，发送form数据</div><div class="line">        &#125;</div><div class="line">        //上传进度实现方法，上传过程中会频繁调用该方法</div><div class="line">        function progressFunction(evt) &#123;</div><div class="line">            </div><div class="line">             var progressBar = document.getElementById(&quot;progressBar&quot;);</div><div class="line">             var percentageDiv = document.getElementById(&quot;percentage&quot;);</div><div class="line">             // event.total是需要传输的总字节，event.loaded是已经传输的字节。如果event.lengthComputable不为真，则event.total等于0</div><div class="line">             if (evt.lengthComputable) &#123;//</div><div class="line">                 progressBar.max = evt.total;</div><div class="line">                 progressBar.value = evt.loaded;</div><div class="line">                 percentageDiv.innerHTML = Math.round(evt.loaded / evt.total * 100) + &quot;%&quot;;</div><div class="line">             &#125;</div><div class="line">            </div><div class="line">            var time = document.getElementById(&quot;time&quot;);</div><div class="line">            var nt = new Date().getTime();//获取当前时间</div><div class="line">            var pertime = (nt-ot)/1000; //计算出上次调用该方法时到现在的时间差，单位为s</div><div class="line">            ot = new Date().getTime(); //重新赋值时间，用于下次计算</div><div class="line">            </div><div class="line">            var perload = evt.loaded - oloaded; //计算该分段上传的文件大小，单位b       </div><div class="line">            oloaded = evt.loaded;//重新赋值已上传文件大小，用以下次计算</div><div class="line">        </div><div class="line">            //上传速度计算</div><div class="line">            var speed = perload/pertime;//单位b/s</div><div class="line">            var bspeed = speed;</div><div class="line">            var units = &apos;b/s&apos;;//单位名称</div><div class="line">            if(speed/1024&gt;1)&#123;</div><div class="line">                speed = speed/1024;</div><div class="line">                units = &apos;k/s&apos;;</div><div class="line">            &#125;</div><div class="line">            if(speed/1024&gt;1)&#123;</div><div class="line">                speed = speed/1024;</div><div class="line">                units = &apos;M/s&apos;;</div><div class="line">            &#125;</div><div class="line">            speed = speed.toFixed(1);</div><div class="line">            //剩余时间</div><div class="line">            var resttime = ((evt.total-evt.loaded)/bspeed).toFixed(1);</div><div class="line">            time.innerHTML = &apos;，速度：&apos;+speed+units+&apos;，剩余时间：&apos;+resttime+&apos;s&apos;;</div><div class="line">               if(bspeed==0)</div><div class="line">                time.innerHTML = &apos;上传已取消&apos;;</div><div class="line">        &#125;</div><div class="line">        //上传成功响应</div><div class="line">        function uploadComplete(evt) &#123;</div><div class="line">         //服务断接收完文件返回的结果</div><div class="line">         //    alert(evt.target.responseText);</div><div class="line">             alert(&quot;上传成功！&quot;);</div><div class="line">        &#125;</div><div class="line">        //上传失败</div><div class="line">        function uploadFailed(evt) &#123;</div><div class="line">            alert(&quot;上传失败！&quot;);</div><div class="line">        &#125;</div><div class="line">          //取消上传</div><div class="line">        function cancleUploadFile()&#123;</div><div class="line">            xhr.abort();</div><div class="line">        &#125;</div><div class="line">    &lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;progress id=&quot;progressBar&quot; value=&quot;0&quot; max=&quot;100&quot; style=&quot;width: 300px;&quot;&gt;&lt;/progress&gt;</div><div class="line">    &lt;span id=&quot;percentage&quot;&gt;&lt;/span&gt;&lt;span id=&quot;time&quot;&gt;&lt;/span&gt;</div><div class="line">    &lt;br /&gt;&lt;br /&gt;</div><div class="line">    &lt;input type=&quot;file&quot; id=&quot;file&quot; name=&quot;myfile&quot; /&gt;</div><div class="line">    &lt;input type=&quot;button&quot; onclick=&quot;UpladFile()&quot; value=&quot;上传&quot; /&gt;</div><div class="line">    &lt;input type=&quot;button&quot; onclick=&quot;cancleUploadFile()&quot; value=&quot;取消&quot; /&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <blockquote>
-<p>安装</p>
+<p>若想用jQuery 中的ajax实现的话，jQuery的 ajax 方法没有关于 progress 事件的操作，此时需要调用的XMLHttpRequest对象是指定progress 事件。</p>
 </blockquote>
-<pre><code>安装Hexo需要Node.js和git，有这两个之后直接用命令行安装Hexo
-
-sudo npm install -g hexo
-</code></pre><blockquote>
-<p>初始化</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">$.ajax(&#123;</div><div class="line">    type: &quot;POST&quot;,</div><div class="line">　　url: &quot;upload&quot;,</div><div class="line">　　data: formData ,　　//这里上传的数据使用了formData 对象</div><div class="line">　　processData : false, </div><div class="line">　　//必须false才会自动加上正确的Content-Type </div><div class="line">　　contentType : false , </div><div class="line">　　　　</div><div class="line">　　//这里我们先拿到jQuery产生的 XMLHttpRequest对象，为其增加 progress 事件绑定，然后再返回交给ajax使用</div><div class="line">　　xhr: function()&#123;</div><div class="line">　　　　var xhr = $.ajaxSettings.xhr();</div><div class="line">　　　　if(onprogress &amp;&amp; xhr.upload) &#123;</div><div class="line">　　　　　　xhr.upload.onprogress = progressFunction;</div><div class="line"> 　　　　　 return xhr;</div><div class="line"> 　　　 &#125;</div><div class="line"> 　 &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>下载进度条实现</p>
 </blockquote>
-<pre><code>创建一个文件夹 在命令行中将目录定位在该文件夹中，输入下面的命令（注意啊，目录一定搞清楚）：
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">xhr.onprogress = downloadProgress;</div><div class="line">function downloadProgress(event) &#123;//未测试</div><div class="line">    if(event.lengthComputable) &#123;</div><div class="line">        var percentComplete = event.loaded / event.total; </div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
-hexo init //初始化
-npm install
-</code></pre><blockquote>
-<p>生成静态页面</p>
-</blockquote>
-<pre><code>还是在该目录下执行命令：
-
-sudo generate // 可以简写为 hexo g
-
-安装hexo-server插件：
-
-sudo npm install hexo-server
-
-本地启动：
-
-hexo server //可简写为 hexo s
-
-如果执行上面发现出错，很有可能是4000端口被占用了，我们可以修改默认的端口
-在_config.yml文件最后添加下面这几段代码
-
-server:
-      port: 4000
-      compress: true
-      header: true
-
-然后就是见证奇迹的时刻，在浏览器中输入 http://localhost:4000/ 。就可以看到啦！激动...
-但是.....到这里你的博客还只能自己看到。别人看不到啊，怎么办？？？ 接着往下看...
-</code></pre><blockquote>
-<p>配置Github </p>
-</blockquote>
-<pre><code>因为我是先研究的Github再研究的Hexo,所有Github早已经配置好啦，大概是这样的
-
-    1. 新建一个仓库 这里要注意的是 新建仓库的名字必须是 你的用户名.github.io 
-    2. 在刚才安装Hexo的文件夹下找到_config.yml文件，我们要对他进行修改了。（马上就可以让别人看到你的博客啦！）
-    3. 用编辑器打开这个文件 拉到最下面进行修改(注意啊，每个冒号后面都有一个空格，别踩坑！)
-
-
-    deploy:
-       type: git
-         repository: 这里填写你的Github仓库地址（去你Github那里直接复制过来）
-          branch: master
-          （文件的其他参数，我后面有写，先不要急！）
-
-      4. 执行： 
-      npm install hexo-deployer-git --save
-      5. 执行部署（就跟项目上线差不多，执行了别人就能看到了，想好有没有BUG啊)
-      hexo deploy
-
-  大功告成！ 接下来就是见证奇迹时刻，在浏览器中输入 刚才你的仓库名 就是那个 你的用户名.github.io
-</code></pre><blockquote>
-<p>总结一下：</p>
-</blockquote>
-<pre><code>每次对主题、文件等就行了修改，需要三步才能让你的博客让别人看到
-    1. hexo clean 
-    2. hexo generate
-    3. hexo deploy
-
-要是感觉单词长 就这样写：
-    1. hexo clean
-    2. hexo g -d
-
-突然想起来，每次发布完，你会发现终端不能输入命令了！（反正我的是这样的），按control+z 
-</code></pre><blockquote>
-<p>备注：</p>
-</blockquote>
-<pre><code>一些常用的命令：
-    hexo new &quot;postName&quot; #新建文章
-    hexo new page &quot;pageName&quot; #新建页面
-    hexo generate #生成静态页面至public目录
-    hexo server #开启预览访问端口（默认端口4000，&apos;ctrl + c&apos;关闭server）
-    hexo deploy #将.deploy目录部署到GitHub
-    hexo help  #查看帮助
-    hexo version  #查看Hexo的版本
-
-创建的文章，在source/_posts下，后缀是md，哦对了！这里面那个Helloworld.md那个文件可以删了,
-看到就想起来当初看java的时候，配置完环境，第一条输入的hello world！！
-</code></pre><blockquote>
-<p>_config.yml 文件的一些参数说明</p>
-</blockquote>
-<pre><code>title 网站的标题
-subtitle 网站的副标题
-description 网站的描述
-author 你的名字
-language 网站的语言。使用2-lettter ISO-639-1代码。默认是en。（有填写规范的，别乱写）
-timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在这里找到可用的时区列表。一些例子
-是America/New_York，Japan和UTC。 （同上）
-</code></pre>
       
     </div>
     
@@ -416,11 +328,17 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/03/22/Ngrok-apache/">
-                    Ngrok_apache
+                <a href="/2016/06/06/HTML5的FileReader接口/">
+                    FileReader接口
                 </a>
             </div>
         
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/04/06/javascript-dom/">
+                    javascript_dom
+                </a>
+            </div>
         
     </nav>
 
@@ -430,7 +348,7 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#XMLHttpRequest上传文件实现进度条"><span class="toc-number">1.</span> <span class="toc-text">XMLHttpRequest上传文件实现进度条</span></a></li></ol>
         
     </div>
     <style>
@@ -466,7 +384,7 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"基于Hexo和Github的博客　| 杨洋洋的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"XMLHttpRequest上传文件实现进度条　| 杨洋洋的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -500,7 +418,7 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/03/22/Ngrok-apache/" title="上一篇: Ngrok_apache">
+            <a href="/2016/06/06/HTML5的FileReader接口/" title="上一篇: FileReader接口">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -508,7 +426,9 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/04/06/javascript-dom/" title="下一篇: javascript_dom">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
