@@ -334,6 +334,7 @@ git reset HEAD filename //可以撤销暂存区的修改，重新放回工作区
 <pre><code>*注意，因为我使用的是MAC 命令前加了sudo来用管理权限，WIN电脑不用写sudo
 安装Hexo需要Node.js和git，有这两个之后直接用命令行安装Hexo
 
+（PS：发现官网改命令了，回来更新下）
 sudo npm install hexo-cli -g
 </code></pre><blockquote>
 <p>初始化</p>
