@@ -331,9 +331,10 @@ git reset HEAD filename //可以撤销暂存区的修改，重新放回工作区
 <blockquote>
 <p>安装</p>
 </blockquote>
-<pre><code>安装Hexo需要Node.js和git，有这两个之后直接用命令行安装Hexo
+<pre><code>*注意，因为我使用的是MAC 命令前加了sudo来用管理权限，WIN电脑不用写sudo
+安装Hexo需要Node.js和git，有这两个之后直接用命令行安装Hexo
 
-sudo npm install -g hexo
+sudo npm install hexo-cli -g
 </code></pre><blockquote>
 <p>初始化</p>
 </blockquote>
@@ -346,7 +347,7 @@ npm install
 </blockquote>
 <pre><code>还是在该目录下执行命令：
 
-sudo generate // 可以简写为 hexo g
+sudo hexo generate // 可以简写为 hexo g
 
 安装hexo-server插件：
 
