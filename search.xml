@@ -374,27 +374,29 @@ server:
 <p>配置Github </p>
 </blockquote>
 <pre><code>因为我是先研究的Github再研究的Hexo,所有Github早已经配置好啦，大概是这样的
-
-    1. 新建一个仓库 这里要注意的是 新建仓库的名字必须是 你的用户名.github.io 
-    2. 在刚才安装Hexo的文件夹下找到_config.yml文件，我们要对他进行修改了。（马上就可以让别人看到你的博客啦！）
-    3. 用编辑器打开这个文件 拉到最下面进行修改(注意啊，每个冒号后面都有一个空格，别踩坑！)
+1. 新建一个仓库 这里要注意的是 新建仓库的名字必须是 你的用户名.github.io 
+2. 在刚才安装Hexo的文件夹下找到_config.yml文件，我们要对他进行修改了。（马上就可以让别人看到你的博客啦！）
+3. 用编辑器打开这个文件 拉到最下面进行修改(注意啊，每个冒号后面都有一个空格，别踩坑！)
     deploy:
-       type: git
-         repository: 这里填写你的Github仓库地址（去你Github那里直接复制过来）
-          branch: master
-          （文件的其他参数，我后面有写，先不要急！）
-
-      4. 执行： 
-      npm install hexo-deployer-git --save
-      5. 执行部署（就跟项目上线差不多，执行了别人就能看到了，想好有没有BUG啊)
-      hexo deploy
+      type: git
+      repository: 这里填写你的Github仓库地址（去你Github那里直接复制过来）
+      branch: master
+     （文件的其他参数，我后面有写，先不要急！）
+</code></pre><blockquote>
+<p>安装用来部署到git上的插件：</p>
+</blockquote>
+<pre><code>npm install hexo-deployer-git --save
+</code></pre><blockquote>
+<p>执行部署（就跟项目上线差不多，执行了别人就能看到了，想好有没有BUG啊)</p>
+</blockquote>
+<pre><code>hexo deploy
 </code></pre><h4 id="收到反馈，大部分人在部署这个地方出现了很多问题"><a href="#收到反馈，大部分人在部署这个地方出现了很多问题" class="headerlink" title="收到反馈，大部分人在部署这个地方出现了很多问题"></a>收到反馈，大部分人在部署这个地方出现了很多问题</h4><ul>
 <li>问题1：报错出现  </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">**place tell me who are you** </div><div class="line">原因：</div><div class="line">		可能是你第一次使用GitHub上传东西，所有要告诉他，你是谁，好吧，那就告诉他吧。（PS：运行下面命令，请注意，使用git bush运行。命令行可能会不识别）</div><div class="line">		</div><div class="line">解决：</div><div class="line">  			我是	git config --global user.name &quot;yangyangyang&quot;</div><div class="line">  		我的邮箱	git config --global user.email &quot;yyy@qq.com&quot;</div><div class="line">  		(PS: 你别真的把 我是。。。 我的邮箱。。打上去了)</div><div class="line">  		然后可以查看配置是否成功</div><div class="line">  					git config --list</div><div class="line">  		然后生成秘钥 ssh-keygen -t rsa -C &quot;yyy@qq.com&quot; 应该是连续按三四个回车就OK 如果中间弹出个（y/n）输入个 y 接着回车</div><div class="line">  		然后注意反馈的命令里面的这一句：</div><div class="line">  		Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa)</div><div class="line">  		括号后面的是路径，取那个路径取找 id_rsa.pub文件，记事本打开，复制里面的所有内容。</div><div class="line">  		接着去github点你的头像，然后点下拉中的 Settings 然后看左边，有个SSH and GPG keys 点进去，再点绿色的 New SSH key 然后 title随便输入一个 key 中粘贴你刚才复制的东西 ok 点击 下方绿色按钮 Add SSH key 好了 在回去执行 hexo deploy吧。</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">**place tell me who are you** </div><div class="line">原因：</div><div class="line">	可能是你第一次使用GitHub上传东西，所有要告诉他，你是谁，好吧，那就告诉他吧。（PS：运行下面命令，请注意，使用git bush运行。命令行可能会不识别）</div><div class="line">		</div><div class="line">解决：</div><div class="line">	我是	git config --global user.name &quot;yangyangyang&quot;</div><div class="line">	我的邮箱	git config --global user.email &quot;yyy@qq.com&quot;</div><div class="line">	(PS: 你别真的把 我是。。。 我的邮箱。。打上去了)</div><div class="line">	然后可以查看配置是否成功</div><div class="line">  		git config --list</div><div class="line">然后生成秘钥 ssh-keygen -t rsa -C &quot;yyy@qq.com&quot; 应该是连续按三四个回车就OK 如果中间弹出个（y/n）输入个 y 接着回车</div><div class="line">然后注意反馈的命令里面的这一句：</div><div class="line">Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa)</div><div class="line">括号后面的是路径，取那个路径取找 id_rsa.pub文件，记事本打开，复制里面的所有内容。</div><div class="line">接着去github点你的头像，然后点下拉中的 Settings 然后看左边，有个SSH and GPG keys 点进去，</div><div class="line">再点绿色的 New SSH key 然后 title随便输入一个 key 中粘贴你刚才复制的东西 ok 点击 下方绿色按钮 Add SSH key 好了 再回去执行 hexo deploy吧。</div></pre></td></tr></table></figure>
 <ul>
 <li><p>问题2：报错出现</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">error:failed to execute prompt script (exit code 1)</div><div class="line">那么恭喜你，麻烦了。</div><div class="line"></div><div class="line">原因：</div><div class="line">		我猜测是配置文件的问题，也就是上面我们配置_config.yml文件的时候，没有配置好。</div><div class="line"></div><div class="line">解决：</div><div class="line">		检查你的配置文件</div><div class="line">		deploy:</div><div class="line"> 		  type: git</div><div class="line"> 		  repository: 你仓库地址（HTTPS开头的）</div><div class="line"> 		  branch: master</div><div class="line"> 			</div><div class="line"> 		看看格式是否正确 冒号后面必须跟空格，这几句的对齐方式也必须是这样的！！下面的缩进是两个空格，请不用使用 tab ！检查完没问题，好的，再去执行一遍hexo deploy，还是报错，那么接着试</div><div class="line"> 		</div><div class="line"> 		把配置文件改成这样：</div><div class="line"> 		deploy:</div><div class="line">	  type: git</div><div class="line">	  repo: 你仓库地址 （git开头的）</div><div class="line">	  branch: master</div><div class="line">	  name: 你github上的用户名</div><div class="line">	  email: 你登陆github的邮箱</div><div class="line"> 		</div><div class="line"> 	（PS：取仓库地址----&gt; 登陆上去后，在右上角点你的github头像，下拉菜单中点your profile，然后找你刚才建的以你应户名然后.github.io结尾的仓库，点进去，右边有个绿色按钮，点击后，下拉的面板中左上角出现Clone with HTTPS,那下面的文本框中就是你以HTTPS开头的仓库地址，要使用git开头的，请点下拉面板中的右上角 Use SSH  然后复制下面的地址）</div><div class="line"> 	</div><div class="line">	改完配置文件载执行 hexo deploy. 什么？还报错？ 那么我也没办法了！</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"> error:failed to execute prompt script (exit code 1)</div><div class="line"> 那么恭喜你，麻烦了。</div><div class="line"> </div><div class="line"> 原因：我猜测是配置文件的问题，也就是上面我们配置_config.yml文件的时候，没有配置好。</div><div class="line"> </div><div class="line"> 解决：检查你的配置文件</div><div class="line"> </div><div class="line"> deploy:</div><div class="line">   type: git</div><div class="line">   repository: 你仓库地址（HTTPS开头的）</div><div class="line">   branch: master</div><div class="line">看看格式是否正确 冒号后面必须跟空格，这几句的对齐方式也必须是这样的！！下面的缩进是两个空格，请不用使用 tab ！</div><div class="line">检查完没问题，好的，再去执行一遍hexo deploy，还是报错，那么接着试</div><div class="line">  		</div><div class="line">把配置文件改成这样：</div><div class="line"> deploy:</div><div class="line">   type: git</div><div class="line">   repo: 你仓库地址 （git开头的）</div><div class="line">   branch: master</div><div class="line">   name: 你github上的用户名</div><div class="line">   email: 你登陆github的邮箱</div><div class="line">（PS：取仓库地址----&gt; 登陆上去后，在右上角点你的github头像，下拉菜单中点your profile，</div><div class="line">然后找你刚才建的以你应户名然后.github.io结尾的仓库，点进去，右边有个绿色按钮，</div><div class="line">点击后，下拉的面板中左上角出现Clone with HTTPS,那下面的文本框中就是你以HTTPS开头的仓库地址，</div><div class="line">要使用git开头的，请点下拉面板中的右上角 Use SSH  然后复制下面的地址）</div><div class="line">  	</div><div class="line">改完配置文件载执行 hexo deploy. 什么？还报错？ 那么我也没办法了！谷歌吧！</div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><strong>大功告成！ 接下来就是见证奇迹时刻，在浏览器中输入 刚才你的仓库名 就是那个 你的用户名.github.io</strong></p>
