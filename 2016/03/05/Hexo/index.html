@@ -22,7 +22,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/03/05/Hexo/index.html">
 <meta property="og:site_name" content="杨洋洋的个人博客">
 <meta property="og:description" content="写在前面：    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！">
-<meta property="og:updated_time" content="2017-07-20T12:36:14.000Z">
+<meta property="og:updated_time" content="2017-07-20T12:44:12.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于Hexo和Github的博客">
 <meta name="twitter:description" content="写在前面：    其实很早就有了搭建个人博客的想法，但是一直都很忙，没有顾上。也是因为本来想着自己写一个博客的页面通过Giuhub来发布，感觉需要占用挺长时间的。所有一直没动手，但是当我看到Hexo框架的时候，我心中一喜，十几分钟搭建好了自己的博客！哈哈，这里总结一下经过，大家可以参考！">
@@ -367,37 +367,16 @@ server:
       npm install hexo-deployer-git --save
       5. 执行部署（就跟项目上线差不多，执行了别人就能看到了，想好有没有BUG啊)
       hexo deploy
-</code></pre><blockquote>
-<p>收到反馈，大部分人在部署这个地方出现了很多问题</p>
-</blockquote>
-<ul>
-<li><p>问题1：报错出现  </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">**place tell me who are you** </div><div class="line">原因：</div><div class="line">		可能是你第一次使用GitHub上传东西，所有要告诉他，你是谁，好吧，那就告诉他吧。（PS：运行下面命令，请注意，使用git bush运行。命令行可能会不识别）</div><div class="line">		</div><div class="line">解决：</div><div class="line">  			我是	git config --global user.name &quot;yangyangyang&quot;</div><div class="line">  		我的邮箱	git config --global user.email &quot;yyy@qq.com&quot;</div><div class="line">  		(PS: 你别真的把 我是。。。 我的邮箱。。打上去了)</div><div class="line">  		然后可以查看配置是否成功</div><div class="line">  					git config --list</div><div class="line">  		然后生成秘钥 ssh-keygen -t rsa -C &quot;yyy@qq.com&quot; 应该是连续按三四个回车就OK 如果中间弹出个（y/n）输入个 y 接着回车</div><div class="line">  		然后注意反馈的命令里面的这一句：</div><div class="line">  		</div><div class="line">  		Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa)</div><div class="line">  		</div><div class="line">  		括号后面的是路径，取那个路径取找 id_rsa.pub文件，记事本打开，复制里面的所有内容。</div><div class="line">  		接着去github点你的头像，然后点下拉中的 Settings 然后看左边，有个SSH and GPG keys 点进去，再点绿色的 New SSH key 然后 title随便输入一个 key 中粘贴你刚才复制的东西 ok 点击 下方绿色按钮 Add SSH key 好了 在回去执行 hexo deploy吧。</div><div class="line">```		</div><div class="line">  		</div><div class="line">+ 问题2：报错出现</div></pre></td></tr></table></figure>
-<p>error:failed to execute prompt script (exit code 1)<br>那么恭喜你，麻烦了。</p>
-<p>原因：</p>
-<pre><code>我猜测是配置文件的问题，也就是上面我们配置_config.yml文件的时候，没有配置好。
-</code></pre><p>解决：</p>
-<pre><code>   检查你的配置文件
-   deploy:
-      type: git
-      repository: 你仓库地址（HTTPS开头的）
-      branch: master
-
-    看看格式是否正确 冒号后面必须跟空格，这几句的对齐方式也必须是这样的！！下面的缩进是两个空格，请不用使用 tab ！检查完没问题，好的，再去执行一遍hexo deploy，还是报错，那么接着试
-
-    把配置文件改成这样：
-    deploy:
-    type: git
-    repo: 你仓库地址 （git开头的）
-    branch: master
-    name: 你github上的用户名
-    email: 你登陆github的邮箱
-
-（PS：取仓库地址----&gt; 登陆上去后，在右上角点你的github头像，下拉菜单中点your profile，然后找你刚才建的以你应户名然后.github.io结尾的仓库，点进去，右边有个绿色按钮，点击后，下拉的面板中左上角出现Clone with HTTPS,那下面的文本框中就是你以HTTPS开头的仓库地址，要使用git开头的，请点下拉面板中的右上角 Use SSH  然后复制下面的地址）
-</code></pre><p>   改完配置文件载执行 hexo deploy. 什么？还报错？ 那么我也没办法了！<br>```</p>
-<pre><code>大功告成！ 接下来就是见证奇迹时刻，在浏览器中输入 刚才你的仓库名 就是那个 你的用户名.github.io
-</code></pre></li>
+</code></pre><h4 id="收到反馈，大部分人在部署这个地方出现了很多问题"><a href="#收到反馈，大部分人在部署这个地方出现了很多问题" class="headerlink" title="收到反馈，大部分人在部署这个地方出现了很多问题"></a>收到反馈，大部分人在部署这个地方出现了很多问题</h4><ul>
+<li>问题1：报错出现  </li>
 </ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">**place tell me who are you** </div><div class="line">原因：</div><div class="line">		可能是你第一次使用GitHub上传东西，所有要告诉他，你是谁，好吧，那就告诉他吧。（PS：运行下面命令，请注意，使用git bush运行。命令行可能会不识别）</div><div class="line">		</div><div class="line">解决：</div><div class="line">  			我是	git config --global user.name &quot;yangyangyang&quot;</div><div class="line">  		我的邮箱	git config --global user.email &quot;yyy@qq.com&quot;</div><div class="line">  		(PS: 你别真的把 我是。。。 我的邮箱。。打上去了)</div><div class="line">  		然后可以查看配置是否成功</div><div class="line">  					git config --list</div><div class="line">  		然后生成秘钥 ssh-keygen -t rsa -C &quot;yyy@qq.com&quot; 应该是连续按三四个回车就OK 如果中间弹出个（y/n）输入个 y 接着回车</div><div class="line">  		然后注意反馈的命令里面的这一句：</div><div class="line">  		Enter file in which to save the key (/c/Users/Administrator/.ssh/id_rsa)</div><div class="line">  		括号后面的是路径，取那个路径取找 id_rsa.pub文件，记事本打开，复制里面的所有内容。</div><div class="line">  		接着去github点你的头像，然后点下拉中的 Settings 然后看左边，有个SSH and GPG keys 点进去，再点绿色的 New SSH key 然后 title随便输入一个 key 中粘贴你刚才复制的东西 ok 点击 下方绿色按钮 Add SSH key 好了 在回去执行 hexo deploy吧。</div></pre></td></tr></table></figure>
+<ul>
+<li><p>问题2：报错出现</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">error:failed to execute prompt script (exit code 1)</div><div class="line">那么恭喜你，麻烦了。</div><div class="line"></div><div class="line">原因：</div><div class="line">		我猜测是配置文件的问题，也就是上面我们配置_config.yml文件的时候，没有配置好。</div><div class="line"></div><div class="line">解决：</div><div class="line">		检查你的配置文件</div><div class="line">		deploy:</div><div class="line"> 		  type: git</div><div class="line"> 		  repository: 你仓库地址（HTTPS开头的）</div><div class="line"> 		  branch: master</div><div class="line"> 			</div><div class="line"> 		看看格式是否正确 冒号后面必须跟空格，这几句的对齐方式也必须是这样的！！下面的缩进是两个空格，请不用使用 tab ！检查完没问题，好的，再去执行一遍hexo deploy，还是报错，那么接着试</div><div class="line"> 		</div><div class="line"> 		把配置文件改成这样：</div><div class="line"> 		deploy:</div><div class="line">	  type: git</div><div class="line">	  repo: 你仓库地址 （git开头的）</div><div class="line">	  branch: master</div><div class="line">	  name: 你github上的用户名</div><div class="line">	  email: 你登陆github的邮箱</div><div class="line"> 		</div><div class="line"> 	（PS：取仓库地址----&gt; 登陆上去后，在右上角点你的github头像，下拉菜单中点your profile，然后找你刚才建的以你应户名然后.github.io结尾的仓库，点进去，右边有个绿色按钮，点击后，下拉的面板中左上角出现Clone with HTTPS,那下面的文本框中就是你以HTTPS开头的仓库地址，要使用git开头的，请点下拉面板中的右上角 Use SSH  然后复制下面的地址）</div><div class="line"> 	</div><div class="line">	改完配置文件载执行 hexo deploy. 什么？还报错？ 那么我也没办法了！</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>大功告成！ 接下来就是见证奇迹时刻，在浏览器中输入 刚才你的仓库名 就是那个 你的用户名.github.io</strong></p>
 <blockquote>
 <p>总结一下：</p>
 </blockquote>
@@ -461,7 +440,7 @@ timezone 网站的时区。Hexo默认使用计算机上的设置。你可以在�
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#收到反馈，大部分人在部署这个地方出现了很多问题"><span class="toc-number">1.</span> <span class="toc-text">收到反馈，大部分人在部署这个地方出现了很多问题</span></a></li></ol>
         
     </div>
     <style>
