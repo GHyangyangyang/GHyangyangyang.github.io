@@ -15,17 +15,17 @@
 
 
 
-<meta name="description" content="HTML5的FileReader接口 用来把文件读入内存，并且读取文件中的数据。FileReader接口提供了一个异步API，使用该API可以在浏览器主线程中异步访问文件系统，读取文件中的数据。">
-<meta name="keywords" content="FileReader接口">
+<meta name="description" content="写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录 本章的主要内容  javaScript 历史回顾 javaScript 是什么 javaScript 与 ECMAScript的关系 javaScript 的不同版本">
+<meta name="keywords" content="高程第一章">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FileReader接口">
-<meta property="og:url" content="http://yoursite.com/2016/06/06/HTML5的FileReader接口/index.html">
+<meta property="og:title" content="高级程序设计-第一章">
+<meta property="og:url" content="http://yoursite.com/2016/06/10/第一章_JavaScript简介/index.html">
 <meta property="og:site_name" content="杨洋洋的个人博客">
-<meta property="og:description" content="HTML5的FileReader接口 用来把文件读入内存，并且读取文件中的数据。FileReader接口提供了一个异步API，使用该API可以在浏览器主线程中异步访问文件系统，读取文件中的数据。">
-<meta property="og:updated_time" content="2017-07-18T01:27:14.000Z">
+<meta property="og:description" content="写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录 本章的主要内容  javaScript 历史回顾 javaScript 是什么 javaScript 与 ECMAScript的关系 javaScript 的不同版本">
+<meta property="og:updated_time" content="2017-07-23T07:07:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="FileReader接口">
-<meta name="twitter:description" content="HTML5的FileReader接口 用来把文件读入内存，并且读取文件中的数据。FileReader接口提供了一个异步API，使用该API可以在浏览器主线程中异步访问文件系统，读取文件中的数据。">
+<meta name="twitter:title" content="高级程序设计-第一章">
+<meta name="twitter:description" content="写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录 本章的主要内容  javaScript 历史回顾 javaScript 是什么 javaScript 与 ECMAScript的关系 javaScript 的不同版本">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -57,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>FileReader接口 | 杨洋洋的个人博客</title>
+<title>高级程序设计-第一章 | 杨洋洋的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -265,11 +265,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-HTML5的FileReader接口" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-第一章_JavaScript简介" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/06/06/HTML5的FileReader接口/" class="article-date">
-      <time datetime="2016-06-06T01:25:55.000Z" itemprop="datePublished">2016-06-06</time>
+      <a href="/2016/06/10/第一章_JavaScript简介/" class="article-date">
+      <time datetime="2016-06-10T12:04:00.000Z" itemprop="datePublished">2016-06-10</time>
 </a>
 
 
@@ -284,7 +284,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      FileReader接口
+      高级程序设计-第一章
     </h1>
   
 
@@ -295,7 +295,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/FileReader接口/">FileReader接口</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/高程第一章/">高程第一章</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -305,77 +305,74 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="HTML5的FileReader接口"><a href="#HTML5的FileReader接口" class="headerlink" title="HTML5的FileReader接口"></a><center>HTML5的FileReader接口</center></h3><hr>
-<p>用来把文件读入内存，并且读取文件中的数据。FileReader接口提供了一个异步API，使用该API可以在浏览器主线程中异步访问文件系统，读取文件中的数据。</p>
+        <p><strong>写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录</strong></p>
+<h3 id="本章的主要内容"><a href="#本章的主要内容" class="headerlink" title="本章的主要内容"></a>本章的主要内容</h3><hr>
+<ul>
+<li>javaScript 历史回顾</li>
+<li>javaScript 是什么</li>
+<li>javaScript 与 ECMAScript的关系</li>
+<li>javaScript 的不同版本</li>
+</ul>
 <a id="more"></a>
-<h4 id="1-FileReader接口的方法"><a href="#1-FileReader接口的方法" class="headerlink" title="1. FileReader接口的方法"></a>1. FileReader接口的方法</h4><pre><code>FileReader接口有4个方法，其中3个用来读取文件，另一个用来中断读取。无论读取成功或失败，方法并不会返回读取的结果，这一结果保存在result属性中。
-</code></pre><table>
-<thead>
-<tr>
-<th>方法名</th>
-<th>参数</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>readAsBingaryString</td>
-<td>file</td>
-<td>将文件读取为二进制编码</td>
-</tr>
-<tr>
-<td>readAsText</td>
-<td>file,[encoding]</td>
-<td>将文件读取为文本</td>
-</tr>
-<tr>
-<td>readAsDataURL</td>
-<td>file</td>
-<td>将文件读取为DataURL</td>
-</tr>
-<tr>
-<td>abort</td>
-<td>(none)</td>
-<td>中断读取操作</td>
-</tr>
-</tbody>
-</table>
-<h4 id="2-FileReader接口的事件"><a href="#2-FileReader接口的事件" class="headerlink" title="2. FileReader接口的事件"></a>2. FileReader接口的事件</h4><p>FileReader接口包含了一整套完整的事件模型，用于捕获读取文件时的状态</p>
-<table>
-<thead>
-<tr>
-<th>事件</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>onabort</td>
-<td>中断</td>
-</tr>
-<tr>
-<td>onerror</td>
-<td>出错</td>
-</tr>
-<tr>
-<td>onloadstart</td>
-<td>开始</td>
-</tr>
-<tr>
-<td>onprogress</td>
-<td>正在读取</td>
-</tr>
-<tr>
-<td>onload</td>
-<td><strong>成功获取</strong></td>
-</tr>
-<tr>
-<td>onloadend</td>
-<td><strong>读取完成，无论成功失败</strong></td>
-</tr>
-</tbody>
-</table>
-<h4 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;input type=&quot;file&quot; id=&quot;file /&quot;&gt;</div><div class="line">&lt;input type=&quot;button&quot; value=&quot;读取图像&quot; onclick=&quot;readAsDataURL()&quot; /&gt; </div><div class="line">&lt;input type=&quot;button&quot; value=&quot;读取二进制数据&quot; onclick=&quot;readAsBinaryString()&quot; /&gt; </div><div class="line">&lt;input type=&quot;button&quot; value=&quot;读取文本文件&quot; onclick=&quot;readAsText()&quot; /&gt;</div><div class="line"></div><div class="line">&lt;div id=&quot;result&quot; name=&quot;result&quot;&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line"></div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line"></div><div class="line">var result=document.getElementById(&quot;result&quot;);  </div><div class="line">var file=document.getElementById(&quot;file&quot;); </div><div class="line"></div><div class="line">//判断浏览器是否支持FileReader接口  </div><div class="line">if(typeof FileReader == &apos;undefined&apos;)&#123;  </div><div class="line">	result.InnerHTML=&quot;&lt;p&gt;你的浏览器不支持FileReader接口！&lt;/p&gt;&quot;;  </div><div class="line">	//使选择控件不可操作  </div><div class="line">	file.setAttribute(&quot;disabled&quot;,&quot;disabled&quot;);  </div><div class="line">&#125;  </div><div class="line"></div><div class="line"></div><div class="line">// readAsDataURL</div><div class="line"></div><div class="line">function readAsDataURL()&#123;  </div><div class="line">	//检验是否为图像文件  </div><div class="line">	var file = document.getElementById(&quot;file&quot;).files[0];  </div><div class="line">	if(!/image\/\w+/.test(file.type))&#123;  </div><div class="line">			alert(&quot;上传的不是图片&quot;);  </div><div class="line">		   return false;  </div><div class="line">	 &#125;  </div><div class="line">	 </div><div class="line">	var reader = new FileReader();  </div><div class="line">	//将文件以Data URL形式读入页面  </div><div class="line">	reader.readAsDataURL(file);  </div><div class="line">	reader.onload=function(e)&#123;  </div><div class="line">			var result=document.getElementById(&quot;result&quot;);  </div><div class="line">			//显示文件  </div><div class="line">			 result.innerHTML=&apos;&lt;img src=&quot;&apos; + this.result +&apos;&quot; alt=&quot;&quot; /&gt;&apos;;  </div><div class="line">		 &#125;  </div><div class="line">	&#125;  </div><div class="line"></div><div class="line"></div><div class="line">// readAsBinaryString</div><div class="line"></div><div class="line">function readAsBinaryString()&#123;  </div><div class="line">		var file = document.getElementById(&quot;file&quot;).files[0];  </div><div class="line">		var reader = new FileReader();  </div><div class="line">		//将文件以二进制形式读入页面  </div><div class="line">		reader.readAsBinaryString(file);  </div><div class="line">		reader.onload=function(f)&#123;  </div><div class="line">		var result=document.getElementById(&quot;result&quot;);  </div><div class="line">			//显示文件  </div><div class="line">			result.innerHTML=this.result;  </div><div class="line">		&#125;  </div><div class="line">&#125;  </div><div class="line"></div><div class="line"></div><div class="line">// readAsText</div><div class="line"></div><div class="line">function readAsText()&#123;  </div><div class="line">		var file = document.getElementById(&quot;file&quot;).files[0];  </div><div class="line">		var reader = new FileReader();  </div><div class="line">		//将文件以文本形式读入页面  </div><div class="line">		reader.readAsText(file);  </div><div class="line">		reader.onload=function(f)&#123;  </div><div class="line">				var result=document.getElementById(&quot;result&quot;);  </div><div class="line">				//显示文件  </div><div class="line">				result.innerHTML=this.result;  </div><div class="line">		 &#125;  </div><div class="line">	&#125;  </div><div class="line"></div><div class="line"></div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>诞生</p>
+</blockquote>
+<p>诞生与1995年。当时主要是用来做输入验证的。在javaScript问世之前，必须把表单提交提交到服务端，然后服务端进行验证，最后将结果返回。</p>
+<h4 id="1-1-JavaScript-简史"><a href="#1-1-JavaScript-简史" class="headerlink" title="1.1 JavaScript 简史"></a>1.1 JavaScript 简史</h4><hr>
+<p>当时就职于网景（Netscape）公司的布兰登·艾奇（Brendan Eich）着手为计划于1995年2月发布的Netscape Navigator 2 发布一种名为 LiveScript 的脚本语言，在服务器端较 LiveWire。为了赶时间吧，网景就和Sun公司联手，当时Java很火，所以改名为JavaScript，想借借java的火！！</p>
+<h4 id="1-2-JavaScript-实现"><a href="#1-2-JavaScript-实现" class="headerlink" title="1.2 JavaScript 实现"></a>1.2 JavaScript 实现</h4><hr>
+<p>一个完整的JavaScript实现应该由下列三个不同的部分组成</p>
+<ol>
+<li>核心（ECMAScript）<ul>
+<li>由ECMA-262定义，提供核心语言功能，如它规定了这门语言的下列组成部分：语法、类型、语句、关键字、保留字、操作符、对象</li>
+</ul>
+</li>
+<li>文档对象模型（DOM）：<ul>
+<li><strong>是针对XML但是经过拓展，用于HTML的应用程序编程接口，它会把整个页面来映射成多层次的节点结构。页面中的每一个组成部分都是节点，节点又包换不同的数据类型</strong></li>
+<li>DOM级别<ul>
+<li>DOM 1级<ul>
+<li>主要由两个部分组成 DOM核心（DOM Core）和DOM HTML。其中的DOM核心就是映射XML的文档结构，来简化对文档的任意部分的访问和操作。而DOM HTML是针对HTML的操作和方法。</li>
+<li>理解两者：DOM Core是针对XML的，用来操作HTML的时候就会略显乏力，于是就在它的基础上来针对HTML进行拓展，用来专门操作HTML。就有了DOM HTML</li>
+</ul>
+</li>
+<li>DOM 2级<ul>
+<li>在DOM 1级的基础上进行了拓展，引入了一些新的模块，并开始支持CSS。引入了以下新模块：<ul>
+<li>DOM 视图（DOM Views）：定义了不同文档视图的接口</li>
+<li>DOM 事件（DOM Events）：定义了事件和事件处理接口</li>
+<li>DOM遍历和范围 （DOM Traversal and Range）：定义了遍历和操作文档树的接口</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>DOM 3级<ul>
+<li>进一步拓展了DOM ，引入了统一方式加载和保存文档的方式</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>浏览器对象模型（BOM）<ul>
+<li>根本上说，BOM只处理浏览器窗口和框架，但是习惯把针对浏览器的JavaScript拓展算为BOM的一部分。拓展了一些功能：<ul>
+<li>弹出新的浏览器窗口功能</li>
+<li>移动、缩放、关闭浏览器</li>
+<li><strong>提供浏览器详细信息的 navigator 对象</strong></li>
+<li><strong>提供浏览器所加载页面的详细信息的 location 对象</strong></li>
+<li><strong>提供用户显示器分辨率详细信息的 screen 对象</strong></li>
+<li><strong>对 cookies 的支持</strong></li>
+<li><strong>对 XMLHttpRequest 和IE的 ActiveXObject</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><hr>
+<p>JavaScript是一种专门为页面交互而设计的脚本语言，由三个部分组成：</p>
+<ul>
+<li>ECMAScript: 提供核心语言</li>
+<li>DOM：提供访问和操作页面内容的方法和接口</li>
+<li>BOM：提供与浏览器交互的方法和接口</li>
+</ul>
 
       
     </div>
@@ -387,16 +384,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2016/06/10/第一章_JavaScript简介/">
-                    高级程序设计-第一章
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2016/06/06/XMLHttpRequest上传文件实现进度条/">
-                    XMLHttpRequest上传文件实现进度条
+                <a href="/2016/06/06/HTML5的FileReader接口/">
+                    FileReader接口
                 </a>
             </div>
         
@@ -408,7 +399,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML5的FileReader接口"><span class="toc-number">1.</span> <span class="toc-text">HTML5的FileReader接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-FileReader接口的方法"><span class="toc-number">1.1.</span> <span class="toc-text">1. FileReader接口的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-FileReader接口的事件"><span class="toc-number">1.2.</span> <span class="toc-text">2. FileReader接口的事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-使用"><span class="toc-number">1.3.</span> <span class="toc-text">3. 使用</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#本章的主要内容"><span class="toc-number">1.</span> <span class="toc-text">本章的主要内容</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-JavaScript-简史"><span class="toc-number">1.1.</span> <span class="toc-text">1.1 JavaScript 简史</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-JavaScript-实现"><span class="toc-number">1.2.</span> <span class="toc-text">1.2 JavaScript 实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-number">1.3.</span> <span class="toc-text">小结</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -444,7 +435,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"FileReader接口　| 杨洋洋的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"高级程序设计-第一章　| 杨洋洋的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -478,15 +469,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2016/06/10/第一章_JavaScript简介/" title="上一篇: 高级程序设计-第一章">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2016/06/06/XMLHttpRequest上传文件实现进度条/" title="下一篇: XMLHttpRequest上传文件实现进度条">
+            <a href="/2016/06/06/HTML5的FileReader接口/" title="下一篇: FileReader接口">
                 <i class="fa fa-angle-right"></i>
             </a>
         
