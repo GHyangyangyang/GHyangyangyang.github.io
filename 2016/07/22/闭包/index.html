@@ -15,16 +15,17 @@
 
 
 
-<meta name="description" content="假装不是程序猿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="tags">
-<meta property="og:url" content="http://yoursite.com/tags/index.html">
+<meta name="description" content="闭包 这里分享一下自己的理解，希望能够帮助初学者！（虽然自己也很菜，大牛看到的话，有错请多多指正）！">
+<meta name="keywords" content="闭包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闭包">
+<meta property="og:url" content="http://yoursite.com/2016/07/22/闭包/index.html">
 <meta property="og:site_name" content="杨洋洋的个人博客">
-<meta property="og:description" content="假装不是程序猿">
-<meta property="og:updated_time" content="2017-07-02T14:18:51.000Z">
+<meta property="og:description" content="闭包 这里分享一下自己的理解，希望能够帮助初学者！（虽然自己也很菜，大牛看到的话，有错请多多指正）！">
+<meta property="og:updated_time" content="2017-07-28T13:20:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tags">
-<meta name="twitter:description" content="假装不是程序猿">
+<meta name="twitter:title" content="闭包">
+<meta name="twitter:description" content="闭包 这里分享一下自己的理解，希望能够帮助初学者！（虽然自己也很菜，大牛看到的话，有错请多多指正）！">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>tags | 杨洋洋的个人博客</title>
+<title>闭包 | 杨洋洋的个人博客</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,7 +67,7 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -264,11 +265,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="page-undefined" class="article article-type-page" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-闭包" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/tags/index.html" class="article-date">
-      <time datetime="2015-07-06T14:13:12.000Z" itemprop="datePublished">2015-07-06</time>
+      <a href="/2016/07/22/闭包/" class="article-date">
+      <time datetime="2016-07-22T13:17:23.000Z" itemprop="datePublished">2016-07-22</time>
 </a>
 
 
@@ -283,7 +284,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      tags
+      闭包
     </h1>
   
 
@@ -293,6 +294,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/闭包/">闭包</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -300,86 +305,21 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-              <style>
-    .article-meta { display: none; }
-    #container .article .article-title { padding-right: 0; }
-    .article-header {
-        padding: 0;
-        padding-top: 26px;
-        border-left: none;
-        text-align: center;
-    }
-    .article-header:hover { border-left: none; }
-    .article-title { font-size: 1.6em }
-    .article-entry hr { margin: 0;}
-    .article-meta,
-    #container .article-info-post.article-info { display: none;}
-    #container .article .article-title { padding: 0; }
-</style>
+        <h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a><center>闭包</center></h3><hr>
+<p>这里分享一下自己的理解，希望能够帮助初学者！（虽然自己也很菜，大牛看到的话，有错请多多指正）！<br><a id="more"></a><br>各人感觉，他是一套解决方案！为什么这么说呢？这要从JavaScript的作用域开始说起了。</p>
+<p>在JavaScript中，变量的作用域只有 全局变量和局部变量。而根据该语言的特性，在全局作用域中是访问不到函数的私有变量的</p>
+<p>例1 函数内部访问全局变量:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">1</span>;  <span class="comment">// 全局变量</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(num); <span class="comment">// 访问全局变量</span></div><div class="line">&#125;</div><div class="line">fn(); <span class="comment">// 输出 1</span></div></pre></td></tr></table></figure></p>
+<p>例2 外部访问函数的局部变量<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;  <span class="comment">// 声明局部变量 ( 注意一定要写 var 否则成全局变量了)</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(num);  <span class="comment">//  访问局部变量 报错 num is not defined</span></div></pre></td></tr></table></figure></p>
+<p>而在JavaScript中，对象访问变量机制是先在自身找，自身没有就去父级找。向上一层一层的找上去，那么我们就有了一套解决方案，可以在函数内部再定义一个函数，用来读取父级的变量。</p>
+<p>例3:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(num);  <span class="comment">// 这里可以读取到fn1中的变量 num</span></div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>既然fn2可以读取，为了让外部访问到，那么我们将fn2作为fn1的返回值返回，在外部接收，那么外部就能拿到打包好的fn1中的变量了（就好像早上下楼，发现钥匙没拿，让女朋友从窗户给你扔下楼一样！）</p>
+<p>例4：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(num);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> fn2;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> con = fn1();</div><div class="line">con();   <span class="comment">// 1</span></div></pre></td></tr></table></figure></p>
+<p>到这里，就可以看得出来了，fn2函数就用来把fn1的变量打包给你送出来了，你拆开就可以用了。那么，顺理成章，fn2函数就是个<strong>闭包</strong>了。</p>
+<p>上面说的是闭包的一个基本用途，其实还有一个主要用途就是让函数的变量始终保存在内存中。</p>
+<p>首先得说说垃圾回收机制，在JavaScript中，垃圾是自动回收的，当一个对象没有任何引用指向它的时候，那么垃圾回收机制就认为它是可以回收的，至于什么时候收走那不确定了！<br>例5：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">	<span class="built_in">console</span>.log(num);</div><div class="line">&#125;</div><div class="line">fn();</div></pre></td></tr></table></figure></p>
+<p>例5中，fn被调用后，没有引用指向这个内存了，那么就会被GC认为是可以回收的。自然fn中的变量也会随之销毁，那么闭包是怎么做到不让GC收走的呢？</p>
+<p>因为，在例4的闭包中，num 对于fn2是全局变量，所以他是不会被回收的，而 fn2 又是在 fn1中，所以fn1也是不会被回收的。所以 num 就会始终保存在内存中。<strong>也是因为这样，闭包会很消耗内存，使用不当就是造成内存泄漏</strong></p>
 
-
-    <!-- Tag Cloud Page -->
-    <hr>
-<br>
-
-
-<p class="count"></p>
-
-<div class="tags">
-    <a href="/tags/DOM/" style="font-size: 16px; color: #808080">DOM</a> <a href="/tags/FileReader接口/" style="font-size: 16px; color: #808080">FileReader接口</a> <a href="/tags/Github/" style="font-size: 16px; color: #808080">Github</a> <a href="/tags/Ngrok/" style="font-size: 16px; color: #808080">Ngrok</a> <a href="/tags/XMLHttpRequest/" style="font-size: 16px; color: #808080">XMLHttpRequest</a> <a href="/tags/apache/" style="font-size: 16px; color: #808080">apache</a> <a href="/tags/git/" style="font-size: 16px; color: #808080">git</a> <a href="/tags/hexo/" style="font-size: 16px; color: #808080">hexo</a> <a href="/tags/javaScript/" style="font-size: 16px; color: #808080">javaScript</a> <a href="/tags/闭包/" style="font-size: 16px; color: #808080">闭包</a> <a href="/tags/高程第一章/" style="font-size: 16px; color: #808080">高程第一章</a>
-</div>
-<style>
-    .category-list li{
-        display: inline-block;
-        margin: 0 1em .5em 0;
-        padding: 4px;
-        border: 1px solid lightgray;
-        font-size: 1.2rem;
-    }
-    .category-list a { color: gray; }
-    .category-list-item:hover a {
-        color: gray;
-        text-decoration: none;
-    }
-    .category-list-count {
-        margin-left: 2px;
-        font-size: .9rem;
-    }
-    .article-entry ul li:before{ display: none; }
-    .article-inner { text-align: center; }
-    .tags {
-        max-width: 42em;
-        margin: 2em auto;
-        margin-top: 0em;
-    }
-    .tags a {
-        margin-right: 1em;
-        line-height: 65px;
-        border-bottom: 1px solid gray;
-        white-space: nowrap;
-        transition: border-bottom .5s;
-    }
-    .tags a:hover {
-        border-bottom: 3px dotted gray;
-        text-decoration: none;
-    }
-    #count > span {
-        margin: auto .2em;
-        font-weight: bold;
-    }
-</style>
-
-<!-- Count tags and categories -->
-<p id="count">
-        已有<span><script>document.write($(".category-list-item").length)</script></span>个分类，
-        共计<span><script>document.write($(".tags > a").length)</script></span>个标签
-</p>
-<script>
-    $('#count').appendTo('.count');
-</script>
-
-          
-        
       
     </div>
     
@@ -388,8 +328,42 @@
     
 
 
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/06/10/第一章_JavaScript简介/">
+                    高级程序设计-第一章
+                </a>
+            </div>
+        
+    </nav>
+
   
 </article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#闭包"><span class="toc-number">1.</span> <span class="toc-text">闭包</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
 
 
 
@@ -407,7 +381,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"tags　| 杨洋洋的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"闭包　| 杨洋洋的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -436,6 +410,24 @@
 </section>
     
 
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/06/10/第一章_JavaScript简介/" title="下一篇: 高级程序设计-第一章">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/07/22/闭包/">闭包</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/10/第一章_JavaScript简介/">高级程序设计-第一章</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/HTML5的FileReader接口/">FileReader接口</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/06/06/XMLHttpRequest上传文件实现进度条/">XMLHttpRequest上传文件实现进度条</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/06/javascript-dom/">javascript_dom</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/04/03/git/">git的学习记录</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/22/Ngrok-apache/">Ngrok_apache</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/03/05/Hexo/">基于Hexo和Github的博客</a></li></ul>
 
 
 

@@ -3,6 +3,34 @@
   
     
     <entry>
+      <title><![CDATA[闭包]]></title>
+      <url>/2016/07/22/%E9%97%AD%E5%8C%85/</url>
+      <content type="html"><![CDATA[<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a><center>闭包</center></h3><hr>
+<p>这里分享一下自己的理解，希望能够帮助初学者！（虽然自己也很菜，大牛看到的话，有错请多多指正）！<br><a id="more"></a><br>各人感觉，他是一套解决方案！为什么这么说呢？这要从JavaScript的作用域开始说起了。</p>
+<p>在JavaScript中，变量的作用域只有 全局变量和局部变量。而根据该语言的特性，在全局作用域中是访问不到函数的私有变量的</p>
+<p>例1 函数内部访问全局变量:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">1</span>;  <span class="comment">// 全局变量</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(num); <span class="comment">// 访问全局变量</span></div><div class="line">&#125;</div><div class="line">fn(); <span class="comment">// 输出 1</span></div></pre></td></tr></table></figure></p>
+<p>例2 外部访问函数的局部变量<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;  <span class="comment">// 声明局部变量 ( 注意一定要写 var 否则成全局变量了)</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(num);  <span class="comment">//  访问局部变量 报错 num is not defined</span></div></pre></td></tr></table></figure></p>
+<p>而在JavaScript中，对象访问变量机制是先在自身找，自身没有就去父级找。向上一层一层的找上去，那么我们就有了一套解决方案，可以在函数内部再定义一个函数，用来读取父级的变量。</p>
+<p>例3:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(num);  <span class="comment">// 这里可以读取到fn1中的变量 num</span></div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>既然fn2可以读取，为了让外部访问到，那么我们将fn2作为fn1的返回值返回，在外部接收，那么外部就能拿到打包好的fn1中的变量了（就好像早上下楼，发现钥匙没拿，让女朋友从窗户给你扔下楼一样！）</p>
+<p>例4：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(num);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> fn2;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> con = fn1();</div><div class="line">con();   <span class="comment">// 1</span></div></pre></td></tr></table></figure></p>
+<p>到这里，就可以看得出来了，fn2函数就用来把fn1的变量打包给你送出来了，你拆开就可以用了。那么，顺理成章，fn2函数就是个<strong>闭包</strong>了。</p>
+<p>上面说的是闭包的一个基本用途，其实还有一个主要用途就是让函数的变量始终保存在内存中。</p>
+<p>首先得说说垃圾回收机制，在JavaScript中，垃圾是自动回收的，当一个对象没有任何引用指向它的时候，那么垃圾回收机制就认为它是可以回收的，至于什么时候收走那不确定了！<br>例5：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">	<span class="built_in">console</span>.log(num);</div><div class="line">&#125;</div><div class="line">fn();</div></pre></td></tr></table></figure></p>
+<p>例5中，fn被调用后，没有引用指向这个内存了，那么就会被GC认为是可以回收的。自然fn中的变量也会随之销毁，那么闭包是怎么做到不让GC收走的呢？</p>
+<p>因为，在例4的闭包中，num 对于fn2是全局变量，所以他是不会被回收的，而 fn2 又是在 fn1中，所以fn1也是不会被回收的。所以 num 就会始终保存在内存中。<strong>也是因为这样，闭包会很消耗内存，使用不当就是造成内存泄漏</strong></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> 闭包 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[高级程序设计-第一章]]></title>
       <url>/2016/06/10/%E7%AC%AC%E4%B8%80%E7%AB%A0_JavaScript%E7%AE%80%E4%BB%8B/</url>
       <content type="html"><![CDATA[<p><strong>写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录</strong></p>
