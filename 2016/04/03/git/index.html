@@ -50,9 +50,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
     </ul>
   </nav>
@@ -83,127 +83,84 @@
   <div class="article-content">
     <div class="entry">
       
-        <p><strong>自己的git学习记录</strong></p>
-<a id="more"></a>
-<h1 id="git"><a href="#git" class="headerlink" title="git"></a>git</h1><h2 id="创建、添加、提交"><a href="#创建、添加、提交" class="headerlink" title="创建、添加、提交"></a>创建、添加、提交</h2><blockquote>
+        <h2 id="创建、添加、提交"><a href="#创建、添加、提交" class="headerlink" title="创建、添加、提交"></a>创建、添加、提交</h2><hr>
+<blockquote>
 <p>配置用户信息</p>
 </blockquote>
-<pre><code>// 局部配置（ 在文件夹中 ）
-git config user.name &quot;用户名&quot;
-
-git config user.email &quot;邮箱&quot;
-
-局部的配置信息存储在这个文件夹中的 config 文件中
-
-// 全局配置 
-git config     --global user.name &quot;用户信息&quot;
-
-git config --global user.email &quot;邮箱&quot;
-
-全局配置的信息，存储在家目录的 .gieconfig 文件中
-</code></pre><blockquote>
+<p><strong>局部配置（ 在文件夹中 ）</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config user.name &quot;用户名&quot;</div><div class="line">git config user.email &quot;邮箱&quot;</div></pre></td></tr></table></figure></p>
+<p>局部的配置信息存储在这个文件夹中的 config 文件中<br><a id="more"></a>    </p>
+<p><strong>全局配置</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git config --global user.name &quot;用户信息&quot;</div><div class="line">git config --global user.email &quot;邮箱&quot;</div></pre></td></tr></table></figure></p>
+<p>全局配置的信息，存储在家目录的 .gieconfig 文件中</p>
+<blockquote>
 <p>基本操作</p>
 </blockquote>
-<pre><code>git init  // 创建版本库，需要注意的是，将目录切换你希望的文件夹里面进行创建
-
-注意：git 只监控文件，不监控文件夹
-
-git add . // 将当前文件夹中的所有文件加入到管理的缓存中
-
-git commit -m &quot;提交说明&quot; // 将缓存中的代码一次性提交到仓库 （这个就相当于玩游戏时候存档功能）
-
-
-总结：当文件夹被创建仓库初始化之后，该文件夹就是一个工作区，而在其中会多出一个.git文件夹 他是git的版本库，在git的版本库中，有着非常重要的 暂存区（index）,还有git会为我们自动创建的一个分支master,以及指向master的一个指针HEAD。当我们 git add 的时候，就是相当于把文件修改添加到了暂存区，然后 git commit 就是把暂存区的内容提交到了当前的分支。
-</code></pre><blockquote>
-<p>.gittignore 文件</p>
-</blockquote>
-<pre><code>.gittignore 文件，里面书写的文件或文件夹（写的是文件或者文件夹的路径）不会被跟踪
-</code></pre><h2 id="查看、管理修改、撤销修改"><a href="#查看、管理修改、撤销修改" class="headerlink" title="查看、管理修改、撤销修改"></a>查看、管理修改、撤销修改</h2><blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git init  <span class="comment">// 创建版本库，需要注意的是，将目录切换你希望的文件夹里面进行创建</span></div><div class="line">git add . <span class="comment">// 将当前文件夹中的所有文件加入到管理的缓存中</span></div><div class="line">git commit -m <span class="string">"提交说明"</span> <span class="comment">// 将缓存中的代码一次性提交到仓库 （这个就相当于玩游戏时候存档功能）</span></div></pre></td></tr></table></figure>
+<p>注意：git 只监控文件，不监控文件夹</p>
+<p>总结：当文件夹被创建仓库初始化之后，该文件夹就是一个工作区，而在其中会多出一个.git文件夹 他是git的版本库，在git的版本库中，有着非常重要的 暂存区（index）,还有git会为我们自动创建的一个分支master,以及指向master的一个指针HEAD。当我们 git add 的时候，就是相当于把文件修改添加到了暂存区，然后 git commit 就是把暂存区的内容提交到了当前的分支。</p>
+<p>.gittignore 文件，里面书写的文件或文件夹（写的是文件或者文件夹的路径）不会被跟踪</p>
+<h2 id="查看、管理修改、撤销修改"><a href="#查看、管理修改、撤销修改" class="headerlink" title="查看、管理修改、撤销修改"></a>查看、管理修改、撤销修改</h2><hr>
+<blockquote>
 <p>查看</p>
 </blockquote>
-<pre><code>git status // 查看仓库的当前状态 （ 查看哪些文件被修改过和有无加入到缓存区 ）
-
-git diff // 查看还没有暂存的文件更新了哪些部分  （查看文件被修改了哪些内容）
-
-git log // 查看历史提交记录 如果嫌输出的信息太多，可以加上参数 --pretty=oneline
-
-git log --oneline // 一行显示
-</code></pre><blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git status <span class="comment">// 查看仓库的当前状态 （ 查看哪些文件被修改过和有无加入到缓存区 ）</span></div><div class="line">git diff <span class="comment">// 查看还没有暂存的文件更新了哪些部分  （查看文件被修改了哪些内容）</span></div><div class="line">git log <span class="comment">// 查看历史提交记录 如果嫌输出的信息太多，可以加上参数 --pretty=oneline</span></div><div class="line">git log --oneline <span class="comment">// 一行显示</span></div></pre></td></tr></table></figure>
+<blockquote>
 <p>退回</p>
 </blockquote>
-<pre><code>git reset --hard commit_id // 版本退回  --hard 代表强制的更新工作区的内容
-
-1. 在版本退回前，可以先 git log 查看版本的历史，以便确定要退回到哪个版本
-
-2. 要重返未来，用 git reflog 查看命令历史，找到要回到未来的哪个版本
-
-3. 使用该命令也可以将已经 add 了的，但是还没有 commit 的文件回到起始状态  git reset --hard HEAD
-
-git checkout -- fileName // 把文件在工作区的修改全部撤销，有两种情况：
-
-1. 修改后还没有add到暂存区，那么撤销后回到了和版本库一模一样的状态
-
-2. 已经add到了暂存区，撤销修改回到添加到暂存区后的状态。
-
-总结：就是让文件回到最近一次git commit 或者 git add时的状态。
-git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。
-
-git reset HEAD filename // 可以撤销暂存区的修改，重新放回工作区。
-
-撤销修改应用场景：
-
-场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout -- file。
-
-场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。
-
-场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。
-</code></pre><h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><blockquote>
-<p>查询分支</p>
-</blockquote>
-<pre><code>git branch
-</code></pre><blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard commit_id <span class="comment">// 版本退回  --hard 代表强制的更新工作区的内容</span></div></pre></td></tr></table></figure>
+<ol>
+<li><p>在版本退回前，可以先 git log 查看版本的历史，以便确定要退回到哪个版本</p>
+</li>
+<li><p>要重返未来，用 git reflog 查看命令历史，找到要回到未来的哪个版本</p>
+</li>
+<li><p>使用该命令也可以将已经 add 了的，但是还没有 commit 的文件回到起始状态  git reset –hard HEAD</p>
+</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout -- fileName <span class="comment">// 把文件在工作区的修改全部撤销，有两种情况：</span></div></pre></td></tr></table></figure>
+<ol>
+<li><p>修改后还没有add到暂存区，那么撤销后回到了和版本库一模一样的状态</p>
+</li>
+<li><p>已经add到了暂存区，撤销修改回到添加到暂存区后的状态。</p>
+</li>
+</ol>
+<p>总结：就是让文件回到最近一次git commit 或者 git add时的状态。<br>git checkout其实是用版本库里的版本替换工作区的版本，无论工作区是修改还是删除，都可以“一键还原”。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset HEAD filename <span class="comment">// 可以撤销暂存区的修改，重新放回工作区。</span></div></pre></td></tr></table></figure>
+<p>撤销修改应用场景：</p>
+<p>场景1：当你改乱了工作区某个文件的内容，想直接丢弃工作区的修改时，用命令git checkout – file。</p>
+<p>场景2：当你不但改乱了工作区某个文件的内容，还添加到了暂存区时，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作。</p>
+<p>场景3：已经提交了不合适的修改到版本库时，想要撤销本次提交，参考版本回退一节，不过前提是没有推送到远程库。</p>
+<h2 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h2><p>查询分支</p>
+<p><code>git branch</code></p>
 <p>创建分支</p>
-</blockquote>
-<pre><code>git branch 分支名
-</code></pre><blockquote>
+<p><code>git branch 分支名</code></p>
 <p>切换分支</p>
-</blockquote>
-<pre><code>git checkout 分支名
-</code></pre><blockquote>
+<p><code>git checkout 分支名</code></p>
 <p>合并 </p>
-</blockquote>
-<pre><code>若将 A 分支的东西合并到 B 分支
-1. 先切换到 B 分支
-2. 在该分支执行命令 git merge A
-</code></pre><blockquote>
+<p>若将 A 分支的东西合并到 B 分支</p>
+<ol>
+<li>先切换到 B 分支</li>
+<li>在该分支执行命令 git merge A</li>
+</ol>
 <p>删除</p>
-</blockquote>
-<pre><code>git branch -d 分支名
-</code></pre><blockquote>
+<p><code>git branch -d 分支名</code></p>
 <p>冲突</p>
-</blockquote>
-<pre><code>当合并两个代码优先级相同的版本代码的时候就会出现冲突，会在命令行中爆出 confilect 要求进行修改后再处理。
-处理完成以后再提交一次，就可以啦！ 
-</code></pre><p><strong>注意事项：每次在分支上做的修改，及得添加和提交，在切换分支之前一定要记得 再用 git status 命令查看仓库状态，保证没有没提交的文件再进行下一步操作，防止文件存错了分支导致混乱</strong></p>
-<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><p><strong>注意：操作之前，先 git pull 远程仓库，然后再修改</strong></p>
-<pre><code>1. 添加远程仓库( 裸仓库：即不勾选 初始化仓库的选项 )
+<p>当合并两个代码优先级相同的版本代码的时候就会出现冲突，会在命令行中爆出 confilect 要求进行修改后再处理。<br>处理完成以后再提交一次，就可以啦！ </p>
+<p><strong>注意事项：每次在分支上做的修改，及得添加和提交，在切换分支之前一定要记得 再用 git status 命令查看仓库状态，保证没有没提交的文件再进行下一步操作，防止文件存错了分支导致混乱</strong></p>
+<h2 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h2><hr>
+<p><strong>注意：操作之前，先 git pull 远程仓库，然后再修改</strong></p>
+<ol>
+<li><p>添加远程仓库( 裸仓库：即不勾选 初始化仓库的选项 )</p>
+<p> 第1步：创建SSH Key </p>
+<p> <code>ssh-keygen -t rsa -C &quot;GitHub注册时候的邮箱&quot;</code></p>
+<p> 第2步：在本地仓库的目录下关联远程仓库</p>
+<p> <code>git remote add origin git@github.com:github上的用户名/仓库名.git</code></p>
+<p> 第3步：把本地仓库的所有内容推送到远程仓库上</p>
+<p> <code>git push -u origin master</code><br> 第一次推送时候加上-u 后面再推送就不用了 Git会把我们本地的master分支和远程仓库上的分支关联起来</p>
+</li>
+<li><p>克隆远程仓库 </p>
+<p> git clone git@github.com:用户名/仓库名.git </p>
+</li>
+</ol>
 
-第1步：创建SSH Key 
-
-ssh-keygen -t rsa -C &quot;GitHub注册时候的邮箱&quot;
-
-第2步：在本地仓库的目录下关联远程仓库
-
-git remote add origin git@github.com:github上的用户名/仓库名.git
-
-第3步：把本地仓库的所有内容推送到远程仓库上
-
-git push -u origin master // 第一次推送时候加上-u 后面再推送就不用了 Git会把我们本地的master分支和远程仓库上的分支关联起来
-
-2. 克隆远程仓库 
-
-git clone git@github.com:用户名/仓库名.git 
-</code></pre>
       
     </div>
 

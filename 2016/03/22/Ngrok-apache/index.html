@@ -50,9 +50,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
     </ul>
   </nav>
@@ -91,23 +91,8 @@
 <h3 id="Mac-apache"><a href="#Mac-apache" class="headerlink" title="Mac apache"></a>Mac apache</h3><hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">1. 基本操作</div><div class="line"></div><div class="line">	MAC自带了apache，所有可以直接用</div><div class="line">	httpd -v #查看Apache版本信息</div><div class="line">	sudo apachectl start #启动</div><div class="line">	sudo apachectl stop #停止</div><div class="line">	sudo apachectl restart #重启</div><div class="line"></div><div class="line">注意：每次修改完东西，都需要重新启动apache</div><div class="line">Apache 就启动成功，站点的根目录为系统级根目录 /Library/WebServer/Documents</div><div class="line"></div><div class="line">2. 创建用户级根目录管理起来更加方便</div><div class="line">	1. 创建一个文件夹Sites</div><div class="line">	2. 查看etc/apache2/users 下是否有 username.conf文件，注意username就是你的用户名,如果没有就创建一个.</div><div class="line">	（ps: 我第一次就创建成了username.conf文件！尴尬，现在都没改过来，懒的改了）</div><div class="line">	</div><div class="line">	3. 创建完成后打开，把下面的配置信息扔进去</div><div class="line">	</div><div class="line">		 &lt;Directory &quot;/Users/yangyangyang注意这里是你的用户名/Sites/&quot;&gt;</div><div class="line">		     Options Indexes MultiViews FollowSymLinks</div><div class="line">		     AllowOverride All</div><div class="line">		     Order allow,deny</div><div class="line">		     Allow from all</div><div class="line">		     Require all granted</div><div class="line">		 &lt;/Directory&gt;</div><div class="line">		</div><div class="line">	4. 编辑 /etc/apache2/httpd.conf 文件，找到下列代码，并将前面的注释符号 # 删除：</div><div class="line"></div><div class="line">	     Include /private/etc/apache2/extra/httpd-userdir.conf</div><div class="line">	     LoadModule userdir_module libexec/apache2/mod_userdir.so</div><div class="line">	     </div><div class="line">	5. 编辑 /etc/apache2/extra/httpd-userdir.conf 文件，找到下列代码，并将前面的注释符号 # 删除：</div><div class="line">	</div><div class="line">      Include /private/etc/apache2/users/*.conf</div></pre></td></tr></table></figure>
 <h3 id="etc-apache2-httpd-conf文件的一些参数"><a href="#etc-apache2-httpd-conf文件的一些参数" class="headerlink" title="/etc/apache2/httpd.conf文件的一些参数"></a>/etc/apache2/httpd.conf文件的一些参数</h3><hr>
-<pre><code>
-上面完成后，启动Apache，然后打开Ngrok,输入Ngrok上面产生的网址，查看是否会跳转到你修改的根目录下，如果没有，只需要修改下面的DocumentRoot 后面改成你指定网站的根目录就可以了！ 
+<p>上面完成后，启动Apache，然后打开Ngrok,输入Ngrok上面产生的网址，查看是否会跳转到你修改的根目录 下，如果没有，只需要修改下面的DocumentRoot 后面改成你指定网站的根目录就可以了！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">   DocumentRoot &quot;/path&quot; #这里指定你的网站根目录 </div><div class="line">   ServerName example.com</div><div class="line">   ErrorLog &quot;/private/var/log/apache2/sites-error_log&quot;</div><div class="line">   CustomLog &quot;/private/var/log/apache2/sites-access_log&quot; common</div><div class="line">   &lt;Directory /&gt;</div><div class="line">       Options Indexes FollowSymLinks MultiViews</div><div class="line">       AllowOverride All</div><div class="line">       #Order deny,allow</div><div class="line">       #Allow from all</div><div class="line">       Require all granted</div><div class="line">   &lt;/Directory&gt;</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure></p>
 
-&lt;VirtualHost *:80&gt;
-         DocumentRoot &quot;/path&quot; #这里指定你的网站根目录 
-         ServerName example.com
-         ErrorLog &quot;/private/var/log/apache2/sites-error_log&quot;
-         CustomLog &quot;/private/var/log/apache2/sites-access_log&quot; common
-         &lt;Directory /&gt;
-                 Options Indexes FollowSymLinks MultiViews
-                 AllowOverride All
-                 #Order deny,allow
-                 #Allow from all
-                 Require all granted
-         &lt;/Directory&gt;
-&lt;/VirtualHost&gt;
-</code></pre>
       
     </div>
 
