@@ -4,6 +4,42 @@
 
     
   <url>
+    <loc>http://www.ityyy.cc/2016/10/03/Vue%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2017-08-17T09:19:05.000Z</lastmod>
+    <data>
+        <display>
+        <title>Vue学习记录</title>
+        <pubTime>2016-10-03T10:22:23.000Z</pubTime>
+        
+        <tag>vue</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://www.ityyy.cc/2016/03/22/Ngrok-apache/</loc>
+    <lastmod>2017-08-15T01:47:20.000Z</lastmod>
+    <data>
+        <display>
+        <title>内网穿透</title>
+        <pubTime>2016-03-22T11:42:05.000Z</pubTime>
+        
+        <tag>Ngrok</tag>
+         
+        <tag>apache</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://www.ityyy.cc/2017/01/22/Vue/</loc>
     <lastmod>2017-08-12T09:12:03.000Z</lastmod>
     <data>
@@ -29,25 +65,6 @@
         <pubTime>2016-04-03T10:22:23.000Z</pubTime>
         
         <tag>git</tag>
-         
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://www.ityyy.cc/2016/03/22/Ngrok-apache/</loc>
-    <lastmod>2017-08-11T04:59:49.000Z</lastmod>
-    <data>
-        <display>
-        <title>Ngrok_apache</title>
-        <pubTime>2016-03-22T11:42:05.000Z</pubTime>
-        
-        <tag>Ngrok</tag>
-         
-        <tag>apache</tag>
          
          
            

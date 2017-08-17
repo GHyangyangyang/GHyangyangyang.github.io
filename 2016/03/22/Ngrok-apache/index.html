@@ -97,13 +97,13 @@
 <meta name="description" content="写在前面：    在做移动端项目的时候，需要通过手机来访问电脑上本地的项目，同时让不在同一个局域网的其他设备也可以访问，来同时调试项目，下面这两个配合使用，就可以完美解决这个问题。">
 <meta name="keywords" content="Ngrok,apache">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Ngrok_apache">
+<meta property="og:title" content="内网穿透">
 <meta property="og:url" content="http://www.ityyy.cc/2016/03/22/Ngrok-apache/index.html">
 <meta property="og:site_name" content="杨洋洋的个人博客">
 <meta property="og:description" content="写在前面：    在做移动端项目的时候，需要通过手机来访问电脑上本地的项目，同时让不在同一个局域网的其他设备也可以访问，来同时调试项目，下面这两个配合使用，就可以完美解决这个问题。">
-<meta property="og:updated_time" content="2017-08-11T04:59:49.000Z">
+<meta property="og:updated_time" content="2017-08-15T01:47:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Ngrok_apache">
+<meta name="twitter:title" content="内网穿透">
 <meta name="twitter:description" content="写在前面：    在做移动端项目的时候，需要通过手机来访问电脑上本地的项目，同时让不在同一个局域网的其他设备也可以访问，来同时调试项目，下面这两个配合使用，就可以完美解决这个问题。">
 
 
@@ -139,7 +139,7 @@
 
 
 
-  <title>Ngrok_apache | 杨洋洋的个人博客</title>
+  <title>内网穿透 | 杨洋洋的个人博客</title>
   
 
 
@@ -273,7 +273,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">Ngrok_apache</h2>
+          <h2 class="post-title" itemprop="name headline">内网穿透</h2>
         
 
         <div class="post-meta">
@@ -329,7 +329,7 @@
 <h3 id="Ngrok"><a href="#Ngrok" class="headerlink" title="Ngrok"></a>Ngrok</h3><hr>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">Ngrok的使用相对简单，我使用的是 Sunny-Ngrok </div><div class="line"></div><div class="line">使用方法：</div><div class="line"></div><div class="line">	1. 去官网注册一个账号，开通一条免费的隧道</div><div class="line">	2. 根据官网的教程填写相应的东西</div><div class="line">	3. 下载安装Sunny</div><div class="line">	4. 需要注意的是，映射的端口号默认的是80 个人建议进行修改。例如：8080、8081.</div><div class="line">	</div><div class="line">启动：</div><div class="line"></div><div class="line">	注意，启动隧道需要 cd 到安装的ngrok的目录下</div><div class="line">	启动隧道</div><div class="line">	./sunny clientid 隧道id</div><div class="line">	</div><div class="line">	启动多个隧道</div><div class="line">	./sunny clientid c7fb2defb4081919,3e23d14f040b2b12</div></pre></td></tr></table></figure>
 <h3 id="Mac-apache"><a href="#Mac-apache" class="headerlink" title="Mac apache"></a>Mac apache</h3><hr>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div></pre></td><td class="code"><pre><div class="line">1. 基本操作</div><div class="line"></div><div class="line">	MAC自带了apache，所有可以直接用</div><div class="line">	httpd -v #查看Apache版本信息</div><div class="line">	sudo apachectl start #启动</div><div class="line">	sudo apachectl stop #停止</div><div class="line">	sudo apachectl restart #重启</div><div class="line"></div><div class="line">注意：每次修改完东西，都需要重新启动apache</div><div class="line">Apache 就启动成功，站点的根目录为系统级根目录 /Library/WebServer/Documents</div><div class="line"></div><div class="line">2. 创建用户级根目录管理起来更加方便</div><div class="line">	1. 创建一个文件夹Sites</div><div class="line">	2. 查看etc/apache2/users 下是否有 username.conf文件，注意username就是你的用户名,如果没有就创建一个.</div><div class="line">	（ps: 我第一次就创建成了username.conf文件！尴尬，现在都没改过来，懒的改了）</div><div class="line">	</div><div class="line">	3. 创建完成后打开，把下面的配置信息扔进去</div><div class="line">	</div><div class="line">		 &lt;Directory &quot;/Users/yangyangyang注意这里是你的用户名/Sites/&quot;&gt;</div><div class="line">		     Options Indexes MultiViews FollowSymLinks</div><div class="line">		     AllowOverride All</div><div class="line">		     Order allow,deny</div><div class="line">		     Allow from all</div><div class="line">		     Require all granted</div><div class="line">		 &lt;/Directory&gt;</div><div class="line">		</div><div class="line">	4. 编辑 /etc/apache2/httpd.conf 文件，找到下列代码，并将前面的注释符号 # 删除：</div><div class="line"></div><div class="line">	     Include /private/etc/apache2/extra/httpd-userdir.conf</div><div class="line">	     LoadModule userdir_module libexec/apache2/mod_userdir.so</div><div class="line">	     </div><div class="line">	5. 编辑 /etc/apache2/extra/httpd-userdir.conf 文件，找到下列代码，并将前面的注释符号 # 删除：</div><div class="line">	</div><div class="line">      Include /private/etc/apache2/users/*.conf</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">1. 基本操作</div><div class="line"></div><div class="line">	MAC自带了apache，所有可以直接用</div><div class="line">	httpd -v #查看Apache版本信息</div><div class="line">	sudo apachectl start #启动</div><div class="line">	sudo apachectl stop #停止</div><div class="line">	sudo apachectl restart #重启</div><div class="line"></div><div class="line">注意：每次修改完东西，都需要重新启动apache</div><div class="line">Apache 就启动成功，站点的根目录为系统级根目录 /Library/WebServer/Documents</div><div class="line"></div><div class="line">2. 创建用户级根目录管理起来更加方便</div><div class="line">	1. 创建一个文件夹Sites</div><div class="line">	2. 查看etc/apache2/users 下是否有 username.conf文件，注意username就是你的用户名,如果没有就创建一个.</div><div class="line">	（ps: 我第一次就创建成了username.conf文件！尴尬，现在都没改过来，懒的改了）</div><div class="line">	</div><div class="line">	3. 创建完成后打开，把下面的配置信息扔进去</div><div class="line">	</div><div class="line">		 &lt;Directory &quot;/Users/yangyangyang注意这里是你的用户名/Sites/&quot;&gt;</div><div class="line">		     Options Indexes MultiViews FollowSymLinks</div><div class="line">		     AllowOverride All</div><div class="line">		     Order allow,deny</div><div class="line">		     Allow from all</div><div class="line">		     Require all granted</div><div class="line">		 &lt;/Directory&gt;</div><div class="line">		</div><div class="line">	4. 编辑 /etc/apache2/httpd.conf 文件，找到下列代码，并将前面的注释符号 # 删除：</div><div class="line"></div><div class="line">	     Include /private/etc/apache2/extra/httpd-userdir.conf</div><div class="line">	     LoadModule userdir_module libexec/apache2/mod_userdir.so</div><div class="line">	5. 将 DocumentRoot 后面改为你要修改的目录路径</div><div class="line">	     </div><div class="line">	5. 编辑 /etc/apache2/extra/httpd-userdir.conf 文件，找到下列代码，并将前面的注释符号 # 删除：</div><div class="line">	</div><div class="line">      Include /private/etc/apache2/users/*.conf</div></pre></td></tr></table></figure>
 <h3 id="etc-apache2-httpd-conf文件的一些参数"><a href="#etc-apache2-httpd-conf文件的一些参数" class="headerlink" title="/etc/apache2/httpd.conf文件的一些参数"></a>/etc/apache2/httpd.conf文件的一些参数</h3><hr>
 <p>上面完成后，启动Apache，然后打开Ngrok,输入Ngrok上面产生的网址，查看是否会跳转到你修改的根目录 下，如果没有，只需要修改下面的DocumentRoot 后面改成你指定网站的根目录就可以了！<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&lt;VirtualHost *:80&gt;</div><div class="line">   DocumentRoot &quot;/path&quot; #这里指定你的网站根目录 </div><div class="line">   ServerName example.com</div><div class="line">   ErrorLog &quot;/private/var/log/apache2/sites-error_log&quot;</div><div class="line">   CustomLog &quot;/private/var/log/apache2/sites-access_log&quot; common</div><div class="line">   &lt;Directory /&gt;</div><div class="line">       Options Indexes FollowSymLinks MultiViews</div><div class="line">       AllowOverride All</div><div class="line">       #Order deny,allow</div><div class="line">       #Allow from all</div><div class="line">       Require all granted</div><div class="line">   &lt;/Directory&gt;</div><div class="line">&lt;/VirtualHost&gt;</div></pre></td></tr></table></figure></p>
 
@@ -453,7 +453,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -466,7 +466,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
