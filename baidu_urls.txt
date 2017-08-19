@@ -1,5 +1,6 @@
 http://www.ityyy.cc/2017/01/22/Vue/
 http://www.ityyy.cc/2016/10/03/Vue基础/
+http://www.ityyy.cc/2016/08/01/原型/
 http://www.ityyy.cc/2016/07/22/闭包/
 http://www.ityyy.cc/2016/06/10/第一章_JavaScript简介/
 http://www.ityyy.cc/2016/06/06/HTML5的FileReader接口/

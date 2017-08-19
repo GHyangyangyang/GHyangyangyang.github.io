@@ -193,6 +193,112 @@
     </entry>
     
     <entry>
+      <title><![CDATA[JavaScript 原型]]></title>
+      <url>/2016/08/01/%E5%8E%9F%E5%9E%8B/</url>
+      <content type="html"><![CDATA[<p>记录原型和原型链的学习记录,以及简单的应用场景 , 大家可以去大神<a href="http://www.ruanyifeng.com/blog/2011/06/designing_ideas_of_inheritance_mechanism_in_javascript.html" target="_blank" rel="external">阮一峰</a>的博客进行更好的学习</p>
+<a id="more"></a>
+<h4 id="proto-属性"><a href="#proto-属性" class="headerlink" title=" proto  属性"></a><strong> proto </strong> 属性</h4><p>最早是由火狐引入的，目的就是利用实例对象观察原型对象的结构。<br>在早期还没有这个属性的时候，我们通过实例来观察原型对象需要 实例.constructor.prototype 来获得实例对象的原型对象，非常的麻烦。后来火狐就给实例对象中引入了它，用于快速访问原型对象，后来各大浏览器也效仿。   该属性有双下划线 表示是内部属性</p>
+<p>假设：如果浏览器不支持该属性，我们应该怎么做？</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">Object</span>.prototype.__myproto__ = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.constructor.prototype;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>PS: <strong> proto </strong> 指向他构造函数的原型</p>
+<hr>
+<h4 id="Object-prototype-中常用的成员"><a href="#Object-prototype-中常用的成员" class="headerlink" title="Object.prototype 中常用的成员"></a>Object.prototype 中常用的成员</h4><ul>
+<li><p>hasOwnProperty</p>
+<p>  语法： </p>
+<pre><code>对象.hasOwnProperty(&apos;属性名&apos;)  ---&gt; boolean
+</code></pre><p>  含义：</p>
+<pre><code>判断该对象中的属性是否是自己的  如果是 返回 true,否则返回 false
+</code></pre></li>
+<li><p>isPrototypeOf</p>
+<p>  语法：</p>
+<pre><code>对象1.inPrototypeOf(对象2) ---&gt; boolean
+</code></pre><p>  含义：</p>
+<pre><code>对象1 是不是 对象2 的原型对象，如果是 返回true,否则返回false
+</code></pre></li>
+<li><p>propertyIsEnumerable</p>
+<p>  语法：</p>
+<pre><code>对象.propertyIsEnumerable(&apos;属性名&apos;) ---&gt; boolean
+</code></pre><p>  含义：</p>
+<pre><code>对象的对应属性如果是自己的（非继承来的）同时可枚举（可以forin出来），就返回true,否则返回false
+</code></pre><p>  注意:<br>  所谓的可枚举，十九可以被for in 遍历出来。<br>  在ES5以前，用户自定义的方法都是可以枚举的，不允许设置为不可枚举</p>
+</li>
+<li><p>toString 和 toLocaleString</p>
+<p>  作用：</p>
+<pre><code>对象.toString() 把对象转为字符串输出
+</code></pre><p>  注意：</p>
+<pre><code>由于每一个对象都继承了toString方法，但是又不知道具体的字符串转换，因此JS的作者就约定，默认的toString方法打印出来的是 [object 构造函数名]，构造函数则显示[object Object]，然后由各个内置对象去自己实现toString方法。
+</code></pre></li>
+<li><p>valueOf</p>
+</li>
+</ul>
+<hr>
+<h4 id="prototype-常见的使用方法"><a href="#prototype-常见的使用方法" class="headerlink" title="prototype 常见的使用方法"></a>prototype 常见的使用方法</h4><p>原型继承其实就是给原型中添加成员，然后实例对象直接具有了该成员。就是实现了原型继承<br>那么重点就是，给原型中添加成员的方式有哪些：</p>
+<ul>
+<li><p>利用对象的动态特性</p>
+<p>  例如：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Person.prototype.name = <span class="string">'yyy'</span></div><div class="line">Person.prototype.run = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>直接替换原型对象（一般不推荐）</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">Person.prototype = &#123;</div><div class="line">	<span class="attr">constructor</span>: Person,</div><div class="line">	<span class="attr">name</span>: <span class="string">'yyy'</span>,</div><div class="line">	<span class="attr">run</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>注意：<br>如果使用直接替换原型对象的方式的副作用：在替换前，和替换后，实例访问的原型对象不是同一个对象，因为在替换后，构造函数的指针已经修改指向替换的新对象（新开的一块内存）</strong></p>
+<p><strong>而用对象的动态特性增加属性、方法，是在原始对象的内存上的操作，并且构造函数的指针并没有改，所以没有上述的副作用，只是代码量对一点而已</strong></p>
+<hr>
+<h4 id="instanceof-运算符"><a href="#instanceof-运算符" class="headerlink" title="instanceof 运算符"></a>instanceof 运算符</h4><p>语法：<br>    对象A instanceof 函数B —&gt; boolean<br>含义：<br>    如果 函数B的prototype属性所指的对象，是在对象A的原型链上，那么就返回 true 否则返回 false<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person;</div><div class="line"></div><div class="line">p1 <span class="keyword">instanceof</span> Person  <span class="comment">// true</span></div><div class="line"></div><div class="line">Person.prototype = &#123;&#125;</div><div class="line"></div><div class="line">p1 <span class="keyword">instanceof</span> Person  <span class="comment">// false;</span></div></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>JS中的继承多种多样，最核心的理解就是：拿来主义</p>
+<ul>
+<li><p>原型继承</p>
+<p>  即原型中有了，实例也就有了<br>  代码实现：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Person.prototype.name = <span class="string">'yyy'</span>;</div><div class="line"><span class="keyword">new</span> Person.name   <span class="comment">// yyy</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>混入（mix）式继承</p>
+<p>  就是将对象B中的所有属性和方法，方法对象A中(有点浅拷贝的意思)<br>  代码实现：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">原型.extend = <span class="function"><span class="keyword">function</span>(<span class="params"> obj </span>)</span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> obj)&#123;</div><div class="line">		<span class="keyword">this</span>[k] = obj[k]</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>组合继承</p>
+<p>  即多种继承的方案混合在一起使用 例如将原型继承和混入继承组合使用<br>  代码实现：</p>
+  <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//1. 写个构造函数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"> name,age </span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name = name;</div><div class="line">	<span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//2. 在原型中添加混入方法</span></div><div class="line">Person.fn = Person.prototype</div><div class="line">Person.fn.extend = <span class="function"><span class="keyword">function</span>(<span class="params"> obj </span>)</span>&#123;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> k <span class="keyword">in</span> obj)&#123;</div><div class="line">		<span class="keyword">this</span>[k] = obj[k];</div><div class="line">	&#125;	</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//3. 使用混入方法给原型添加成员</span></div><div class="line"></div><div class="line">Person.fn.extend(&#123;</div><div class="line">	<span class="attr">sayHello</span>: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log( <span class="string">'嗨，大家好我是'</span>+ <span class="keyword">this</span>.name + <span class="string">'我今年'</span> + <span class="keyword">this</span>.age + ‘岁了’ );</div><div class="line">	&#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"><span class="comment">//4. 用构造函数实例化一个对象，那么这个对象就有了原型中的方法</span></div><div class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person( <span class="string">'yyy'</span>,<span class="number">18</span> );</div><div class="line">p.sayHello();</div></pre></td></tr></table></figure>
+</li>
+<li><p>标准继承</p>
+<p>  语法：</p>
+<pre><code>Object.create( 对象 ) --&gt; 新的对象
+例如：
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line"><span class="comment">// obj --&gt; Object.protorype --&gt; bull</span></div><div class="line"></div><div class="line"><span class="keyword">var</span> newObj = <span class="built_in">Object</span>.create( obj );</div><div class="line"><span class="comment">// newObj --&gt; obj --&gt; Object.prototype --&gt; null</span></div></pre></td></tr></table></figure>
+</code></pre></li>
+</ul>
+<pre><code>意义：
+    返回的新对象的原型继承自create方法中传入的参数
+
+注意：
+    早期的js并没有提供继承的语法，道格拉斯在ES3时代给出了继承的实现方法：
+    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//简单版</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">create</span>(<span class="params"> obj </span>)</span>&#123;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">F</span>(<span class="params"></span>)</span>&#123;&#125;</div><div class="line">	F.protorype = obj;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">new</span> F();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    到了ES5时代，这个方法就被标准化了
+
+使用场景：
+
+1. 借助以有的方法实现原型式继承
+    场景：数组不能遍历键值对，但是现在想让这组键值对当做有序的键值对来使用，并且实现keys和values方法
+    代码实现：
+    <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> kv = &#123; <span class="attr">name</span>: <span class="string">'yyy'</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">gender</span>: <span class="string">'男'</span>&#125;;</div></pre></td></tr></table></figure>
+
+2. 提高缓存性能
+</code></pre>]]></content>
+      
+        
+        <tags>
+            
+            <tag> prototype </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[闭包]]></title>
       <url>/2016/07/22/%E9%97%AD%E5%8C%85/</url>
       <content type="html"><![CDATA[<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a><center>闭包</center></h3><hr>
