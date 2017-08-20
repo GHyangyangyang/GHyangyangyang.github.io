@@ -78,7 +78,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="高程第一章," />
+  <meta name="keywords" content="jquery,darp," />
 
 
 
@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录 本章的主要内容  javaScript 历史回顾 javaScript 是什么 javaScript 与 ECMAScript的关系 javaScript 的不同版本">
-<meta name="keywords" content="高程第一章">
+<meta name="description" content="之前用原生的 JS 写过一个拖拽，具体思路和用 jQuery 实现的拖拽思路是一样的。">
+<meta name="keywords" content="jquery,darp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高级程序设计-第一章">
-<meta property="og:url" content="http://www.ityyy.cc/2016/06/10/第一章_JavaScript简介/index.html">
+<meta property="og:title" content="用jQuery实现鼠标拖拽">
+<meta property="og:url" content="http://www.ityyy.cc/2016/11/02/jqueryDarp/index.html">
 <meta property="og:site_name" content="杨洋洋的个人博客">
-<meta property="og:description" content="写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录 本章的主要内容  javaScript 历史回顾 javaScript 是什么 javaScript 与 ECMAScript的关系 javaScript 的不同版本">
-<meta property="og:updated_time" content="2017-07-23T07:07:38.000Z">
+<meta property="og:description" content="之前用原生的 JS 写过一个拖拽，具体思路和用 jQuery 实现的拖拽思路是一样的。">
+<meta property="og:updated_time" content="2017-08-20T10:47:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高级程序设计-第一章">
-<meta name="twitter:description" content="写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录 本章的主要内容  javaScript 历史回顾 javaScript 是什么 javaScript 与 ECMAScript的关系 javaScript 的不同版本">
+<meta name="twitter:title" content="用jQuery实现鼠标拖拽">
+<meta name="twitter:description" content="之前用原生的 JS 写过一个拖拽，具体思路和用 jQuery 实现的拖拽思路是一样的。">
 
 
 
@@ -133,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="http://www.ityyy.cc/2016/06/10/第一章_JavaScript简介/"/>
+  <link rel="canonical" href="http://www.ityyy.cc/2016/11/02/jqueryDarp/"/>
 
 
 
 
 
-  <title>高级程序设计-第一章 | 杨洋洋的个人博客</title>
+  <title>用jQuery实现鼠标拖拽 | 杨洋洋的个人博客</title>
   
 
 
@@ -256,7 +256,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://www.ityyy.cc/2016/06/10/第一章_JavaScript简介/">
+    <link itemprop="mainEntityOfPage" href="http://www.ityyy.cc/2016/11/02/jqueryDarp/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="yangyangyang">
@@ -273,7 +273,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">高级程序设计-第一章</h2>
+          <h2 class="post-title" itemprop="name headline">用jQuery实现鼠标拖拽</h2>
         
 
         <div class="post-meta">
@@ -285,8 +285,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-06-10T20:04:00+08:00">
-                2016-06-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2016-11-02T00:00:00+08:00">
+                2016-11-02
               </time>
             
 
@@ -323,74 +323,15 @@
       
 
       
-        <p><strong>写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录</strong></p>
-<h3 id="本章的主要内容"><a href="#本章的主要内容" class="headerlink" title="本章的主要内容"></a>本章的主要内容</h3><hr>
-<ul>
-<li>javaScript 历史回顾</li>
-<li>javaScript 是什么</li>
-<li>javaScript 与 ECMAScript的关系</li>
-<li>javaScript 的不同版本</li>
-</ul>
-<a id="more"></a>
-<blockquote>
-<p>诞生</p>
-</blockquote>
-<p>诞生与1995年。当时主要是用来做输入验证的。在javaScript问世之前，必须把表单提交提交到服务端，然后服务端进行验证，最后将结果返回。</p>
-<h4 id="1-1-JavaScript-简史"><a href="#1-1-JavaScript-简史" class="headerlink" title="1.1 JavaScript 简史"></a>1.1 JavaScript 简史</h4><hr>
-<p>当时就职于网景（Netscape）公司的布兰登·艾奇（Brendan Eich）着手为计划于1995年2月发布的Netscape Navigator 2 发布一种名为 LiveScript 的脚本语言，在服务器端较 LiveWire。为了赶时间吧，网景就和Sun公司联手，当时Java很火，所以改名为JavaScript，想借借java的火！！</p>
-<h4 id="1-2-JavaScript-实现"><a href="#1-2-JavaScript-实现" class="headerlink" title="1.2 JavaScript 实现"></a>1.2 JavaScript 实现</h4><hr>
-<p>一个完整的JavaScript实现应该由下列三个不同的部分组成</p>
+        <p>之前用原生的 JS 写过一个拖拽，具体思路和用 jQuery 实现的拖拽思路是一样的。<br><a id="more"></a><br>具体的思路如下：</p>
 <ol>
-<li>核心（ECMAScript）<ul>
-<li>由ECMA-262定义，提供核心语言功能，如它规定了这门语言的下列组成部分：语法、类型、语句、关键字、保留字、操作符、对象</li>
-</ul>
-</li>
-<li>文档对象模型（DOM）：<ul>
-<li><strong>是针对XML但是经过拓展，用于HTML的应用程序编程接口，它会把整个页面来映射成多层次的节点结构。页面中的每一个组成部分都是节点，节点又包换不同的数据类型</strong></li>
-<li>DOM级别<ul>
-<li>DOM 1级<ul>
-<li>主要由两个部分组成 DOM核心（DOM Core）和DOM HTML。其中的DOM核心就是映射XML的文档结构，来简化对文档的任意部分的访问和操作。而DOM HTML是针对HTML的操作和方法。</li>
-<li>理解两者：DOM Core是针对XML的，用来操作HTML的时候就会略显乏力，于是就在它的基础上来针对HTML进行拓展，用来专门操作HTML。就有了DOM HTML</li>
-</ul>
-</li>
-<li>DOM 2级<ul>
-<li>在DOM 1级的基础上进行了拓展，引入了一些新的模块，并开始支持CSS。引入了以下新模块：<ul>
-<li>DOM 视图（DOM Views）：定义了不同文档视图的接口</li>
-<li>DOM 事件（DOM Events）：定义了事件和事件处理接口</li>
-<li>DOM遍历和范围 （DOM Traversal and Range）：定义了遍历和操作文档树的接口</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>DOM 3级<ul>
-<li>进一步拓展了DOM ，引入了统一方式加载和保存文档的方式</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>浏览器对象模型（BOM）<ul>
-<li>根本上说，BOM只处理浏览器窗口和框架，但是习惯把针对浏览器的JavaScript拓展算为BOM的一部分。拓展了一些功能：<ul>
-<li>弹出新的浏览器窗口功能</li>
-<li>移动、缩放、关闭浏览器</li>
-<li><strong>提供浏览器详细信息的 navigator 对象</strong></li>
-<li><strong>提供浏览器所加载页面的详细信息的 location 对象</strong></li>
-<li><strong>提供用户显示器分辨率详细信息的 screen 对象</strong></li>
-<li><strong>对 cookies 的支持</strong></li>
-<li><strong>对 XMLHttpRequest 和IE的 ActiveXObject</strong></li>
-</ul>
-</li>
-</ul>
+<li>给元素注册鼠标按下事件，按下鼠标时获得鼠标距离屏幕的X,Y，以及元素距离屏幕的距离，两个值相减后得到鼠标到元素元素左边的距离 （ 为了保持在移动的时候，鼠标在元素的身上的位置不改变）</li>
+<li>给 document 注册鼠标移动事件 当鼠标移动时获得鼠标距离屏幕的XY，然后减去 步骤 1 中算出的距离，就是应该赋值给元素的 定位的 left 和 top 属性的值</li>
+<li><p>当鼠标抬起时候，解除绑定在 document 上的鼠标移动事件，和元素身上的鼠标按下事件</p>
+<p>具体代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">  <span class="keyword">var</span> x, y;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">darp</span>(<span class="params">$obj</span>) </span>&#123;</div><div class="line">    $obj.on(<span class="string">'mousedown'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">      x = e.clientX - $obj.offset().left;</div><div class="line">      y = e.clientY - $obj.offset().top;</div><div class="line">      <span class="keyword">var</span> windowWidth = $(<span class="built_in">window</span>).width();</div><div class="line">      <span class="keyword">var</span> windowHeight = $(<span class="built_in">window</span>).height();</div><div class="line">      </div><div class="line">      $obj.on(<span class="string">'mouseup'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        $(<span class="built_in">document</span>).off();</div><div class="line">       &#125;)</div><div class="line">     &#125;</div><div class="line"></div><div class="line">      $(<span class="built_in">document</span>).on(<span class="string">'mousemove'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> left = e.clientX - x;</div><div class="line">      <span class="keyword">var</span> top = e.clientY - y;</div><div class="line"></div><div class="line">      <span class="comment">// 左上限制</span></div><div class="line">      left = left &lt; <span class="number">0</span> ? <span class="number">0</span> : left;</div><div class="line">      top = top &lt; <span class="number">0</span> ? <span class="number">0</span> : top;</div><div class="line">      <span class="comment">// 右下限制</span></div><div class="line">     left = left &gt; windowWidth - $obj.width() ? windowWidth - $obj.width() : left;</div><div class="line">    top = top &gt; windowHeight - $obj.height() ? windowHeight - $obj.height() : top;</div><div class="line">                </div><div class="line">     $(<span class="string">'div'</span>).css(&#123;</div><div class="line">         <span class="attr">left</span>: left,</div><div class="line">         <span class="attr">top</span>: top</div><div class="line">        &#125;);</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">     &#125;);</div><div class="line"></div><div class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"> darp($(<span class="string">'div'</span>));</div></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><hr>
-<p>JavaScript是一种专门为页面交互而设计的脚本语言，由三个部分组成：</p>
-<ul>
-<li>ECMAScript: 提供核心语言</li>
-<li>DOM：提供访问和操作页面内容的方法和接口</li>
-<li>BOM：提供与浏览器交互的方法和接口</li>
-</ul>
 
       
     </div>
@@ -408,7 +349,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/高程第一章/" rel="tag"># 高程第一章</a>
+            <a href="/tags/jquery/" rel="tag"># jquery</a>
+          
+            <a href="/tags/darp/" rel="tag"># darp</a>
           
         </div>
       
@@ -421,8 +364,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/06/HTML5的FileReader接口/" rel="next" title="FileReader接口">
-                <i class="fa fa-chevron-left"></i> FileReader接口
+              <a href="/2016/10/03/Vue基础/" rel="next" title="Vue学习记录">
+                <i class="fa fa-chevron-left"></i> Vue学习记录
               </a>
             
           </div>
@@ -431,8 +374,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/07/22/闭包/" rel="prev" title="闭包">
-                闭包 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/01/22/Vue/" rel="prev" title="Vue2.0">
+                Vue2.0 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -491,17 +434,8 @@
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            文章目录
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            站点概览
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://img0.imgtn.bdimg.com/it/u=2850827971,2715242025&fm=11&gp=0.jpg"
@@ -554,22 +488,6 @@
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#本章的主要内容"><span class="nav-number">1.</span> <span class="nav-text">本章的主要内容</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-JavaScript-简史"><span class="nav-number">1.1.</span> <span class="nav-text">1.1 JavaScript 简史</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-JavaScript-实现"><span class="nav-number">1.2.</span> <span class="nav-text">1.2 JavaScript 实现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#小结"><span class="nav-number">1.3.</span> <span class="nav-text">小结</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

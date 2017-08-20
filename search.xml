@@ -93,6 +93,31 @@
     </entry>
     
     <entry>
+      <title><![CDATA[用jQuery实现鼠标拖拽]]></title>
+      <url>/2016/11/02/jqueryDarp/</url>
+      <content type="html"><![CDATA[<p>之前用原生的 JS 写过一个拖拽，具体思路和用 jQuery 实现的拖拽思路是一样的。<br><a id="more"></a><br>具体的思路如下：</p>
+<ol>
+<li>给元素注册鼠标按下事件，按下鼠标时获得鼠标距离屏幕的X,Y，以及元素距离屏幕的距离，两个值相减后得到鼠标到元素元素左边的距离 （ 为了保持在移动的时候，鼠标在元素的身上的位置不改变）</li>
+<li>给 document 注册鼠标移动事件 当鼠标移动时获得鼠标距离屏幕的XY，然后减去 步骤 1 中算出的距离，就是应该赋值给元素的 定位的 left 和 top 属性的值</li>
+<li><p>当鼠标抬起时候，解除绑定在 document 上的鼠标移动事件，和元素身上的鼠标按下事件</p>
+<p>具体代码如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">  </div><div class="line">  <span class="keyword">var</span> x, y;</div><div class="line">  </div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">darp</span>(<span class="params">$obj</span>) </span>&#123;</div><div class="line">    $obj.on(<span class="string">'mousedown'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">      x = e.clientX - $obj.offset().left;</div><div class="line">      y = e.clientY - $obj.offset().top;</div><div class="line">      <span class="keyword">var</span> windowWidth = $(<span class="built_in">window</span>).width();</div><div class="line">      <span class="keyword">var</span> windowHeight = $(<span class="built_in">window</span>).height();</div><div class="line">      </div><div class="line">      $obj.on(<span class="string">'mouseup'</span>, <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">        $(<span class="built_in">document</span>).off();</div><div class="line">       &#125;)</div><div class="line">     &#125;</div><div class="line"></div><div class="line">      $(<span class="built_in">document</span>).on(<span class="string">'mousemove'</span>, <span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">      <span class="keyword">var</span> left = e.clientX - x;</div><div class="line">      <span class="keyword">var</span> top = e.clientY - y;</div><div class="line"></div><div class="line">      <span class="comment">// 左上限制</span></div><div class="line">      left = left &lt; <span class="number">0</span> ? <span class="number">0</span> : left;</div><div class="line">      top = top &lt; <span class="number">0</span> ? <span class="number">0</span> : top;</div><div class="line">      <span class="comment">// 右下限制</span></div><div class="line">     left = left &gt; windowWidth - $obj.width() ? windowWidth - $obj.width() : left;</div><div class="line">    top = top &gt; windowHeight - $obj.height() ? windowHeight - $obj.height() : top;</div><div class="line">                </div><div class="line">     $(<span class="string">'div'</span>).css(&#123;</div><div class="line">         <span class="attr">left</span>: left,</div><div class="line">         <span class="attr">top</span>: top</div><div class="line">        &#125;);</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">     &#125;);</div><div class="line"></div><div class="line">   <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line"> darp($(<span class="string">'div'</span>));</div></pre></td></tr></table></figure>
+</li>
+</ol>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> jquery </tag>
+            
+            <tag> darp </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Vue学习记录]]></title>
       <url>/2016/10/03/Vue%E5%9F%BA%E7%A1%80/</url>
       <content type="html"><![CDATA[<h2 id="Vue到底是什么？"><a href="#Vue到底是什么？" class="headerlink" title="Vue到底是什么？"></a>Vue到底是什么？</h2><p>一个 mvvm 框架、一片 HTML 代码配合上 JSON，在 new 出来 vue 实例，适合：移动端项目，小巧不兼容低版本 IE</p>
