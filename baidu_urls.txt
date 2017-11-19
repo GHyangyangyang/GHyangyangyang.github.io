@@ -3,11 +3,10 @@ http://www.ityyy.cc/2017/01/22/Vue/
 http://www.ityyy.cc/2016/11/02/jqueryDarp/
 http://www.ityyy.cc/2016/10/03/Vue基础/
 http://www.ityyy.cc/2016/08/01/原型/
-http://www.ityyy.cc/2016/07/22/闭包/
-http://www.ityyy.cc/2016/06/10/第一章_JavaScript简介/
 http://www.ityyy.cc/2016/06/06/HTML5的FileReader接口/
 http://www.ityyy.cc/2016/06/06/XMLHttpRequest上传文件实现进度条/
 http://www.ityyy.cc/2016/04/06/javascript-dom/
+http://www.ityyy.cc/2016/04/03/gitUse/
 http://www.ityyy.cc/2016/04/03/git/
 http://www.ityyy.cc/2016/03/22/Ngrok-apache/
 http://www.ityyy.cc/2016/03/05/Hexo/

@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://www.ityyy.cc/2016/04/03/gitUse/</loc>
+    
+    <lastmod>2017-11-19T03:54:27.189Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://www.ityyy.cc/2017/11/08/swiper/</loc>
     
     <lastmod>2017-11-08T14:55:32.120Z</lastmod>
@@ -54,20 +61,6 @@
     <loc>http://www.ityyy.cc/2016/03/05/Hexo/</loc>
     
     <lastmod>2017-08-11T04:57:51.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ityyy.cc/2016/07/22/%E9%97%AD%E5%8C%85/</loc>
-    
-    <lastmod>2017-08-11T02:36:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://www.ityyy.cc/2016/06/10/%E7%AC%AC%E4%B8%80%E7%AB%A0_JavaScript%E7%AE%80%E4%BB%8B/</loc>
-    
-    <lastmod>2017-07-23T07:07:38.000Z</lastmod>
     
   </url>
   

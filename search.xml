@@ -343,117 +343,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[闭包]]></title>
-      <url>/2016/07/22/%E9%97%AD%E5%8C%85/</url>
-      <content type="html"><![CDATA[<h3 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a><center>闭包</center></h3><hr>
-<p>这里分享一下自己的理解( 看了阮一峰的博客 )<br><a id="more"></a></p>
-<p>从技术角度上来讲，每个函数都可以看做是一个闭包。即，函数在运行的时候，形成的一个封闭的空间</p>
-<p>这要从JavaScript的作用域开始说起了。</p>
-<p>在JavaScript中，变量的作用域只有 全局变量和局部变量。而根据该语言的特性，在全局作用域中是访问不到函数的私有变量的</p>
-<p>例1 函数内部访问全局变量:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> num = <span class="number">1</span>;  <span class="comment">// 全局变量</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(num); <span class="comment">// 访问全局变量</span></div><div class="line">&#125;</div><div class="line">fn(); <span class="comment">// 输出 1</span></div></pre></td></tr></table></figure></p>
-<p>例2 外部访问函数的局部变量<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;  <span class="comment">// 声明局部变量 ( 注意一定要写 var 否则成全局变量了)</span></div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(num);  <span class="comment">//  访问局部变量 报错 num is not defined</span></div></pre></td></tr></table></figure></p>
-<p>而在JavaScript中，对象访问变量机制是先在自身找，自身没有就去父级找。向上一层一层的找上去，那么我们就有了一套解决方案，可以在函数内部再定义一个函数，用来读取父级的变量。</p>
-<p>例3:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(num);  <span class="comment">// 这里可以读取到fn1中的变量 num</span></div><div class="line">	&#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>既然fn2可以读取，为了让外部访问到，那么我们将fn2作为fn1的返回值返回，在外部接收，那么外部就能拿到打包好的fn1中的变量了（就好像早上下楼，发现钥匙没拿，让女朋友从窗户给你扔下楼一样！）</p>
-<p>例4：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">	<span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="built_in">console</span>.log(num);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> fn2;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> con = fn1();</div><div class="line">con();   <span class="comment">// 1</span></div></pre></td></tr></table></figure></p>
-<p>上面说的是闭包的一个基本用途，其实还有一个主要用途就是让函数的变量始终保存在内存中。</p>
-<p>首先得说说垃圾回收机制，在JavaScript中，垃圾是自动回收的，当一个对象没有任何引用指向它的时候，那么垃圾回收机制就认为它是可以回收的，至于什么时候收走那不确定了！<br>例5：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> num = <span class="number">1</span>;</div><div class="line">	<span class="built_in">console</span>.log(num);</div><div class="line">&#125;</div><div class="line">fn();</div></pre></td></tr></table></figure></p>
-<p>例5中，fn被调用后，没有引用指向这个内存了，那么就会被GC认为是可以回收的。自然fn中的变量也会随之销毁，那么闭包是怎么做到不让GC收走的呢？</p>
-<p>因为，在例4的闭包中，num 对于fn2是全局变量，所以他是不会被回收的，而 fn2 又是在 fn1中，所以fn1也是不会被回收的。所以 num 就会始终保存在内存中。<strong>也是因为这样，闭包会很消耗内存，使用不当就是造成内存泄漏</strong></p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> 闭包 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
-      <title><![CDATA[高级程序设计-第一章]]></title>
-      <url>/2016/06/10/%E7%AC%AC%E4%B8%80%E7%AB%A0_JavaScript%E7%AE%80%E4%BB%8B/</url>
-      <content type="html"><![CDATA[<p><strong>写在前面：最近想提升一下自己的JS，所有决定把《高级程序设计》抄写一遍，并在博客记录</strong></p>
-<h3 id="本章的主要内容"><a href="#本章的主要内容" class="headerlink" title="本章的主要内容"></a>本章的主要内容</h3><hr>
-<ul>
-<li>javaScript 历史回顾</li>
-<li>javaScript 是什么</li>
-<li>javaScript 与 ECMAScript的关系</li>
-<li>javaScript 的不同版本</li>
-</ul>
-<a id="more"></a>
-<blockquote>
-<p>诞生</p>
-</blockquote>
-<p>诞生与1995年。当时主要是用来做输入验证的。在javaScript问世之前，必须把表单提交提交到服务端，然后服务端进行验证，最后将结果返回。</p>
-<h4 id="1-1-JavaScript-简史"><a href="#1-1-JavaScript-简史" class="headerlink" title="1.1 JavaScript 简史"></a>1.1 JavaScript 简史</h4><hr>
-<p>当时就职于网景（Netscape）公司的布兰登·艾奇（Brendan Eich）着手为计划于1995年2月发布的Netscape Navigator 2 发布一种名为 LiveScript 的脚本语言，在服务器端较 LiveWire。为了赶时间吧，网景就和Sun公司联手，当时Java很火，所以改名为JavaScript，想借借java的火！！</p>
-<h4 id="1-2-JavaScript-实现"><a href="#1-2-JavaScript-实现" class="headerlink" title="1.2 JavaScript 实现"></a>1.2 JavaScript 实现</h4><hr>
-<p>一个完整的JavaScript实现应该由下列三个不同的部分组成</p>
-<ol>
-<li>核心（ECMAScript）<ul>
-<li>由ECMA-262定义，提供核心语言功能，如它规定了这门语言的下列组成部分：语法、类型、语句、关键字、保留字、操作符、对象</li>
-</ul>
-</li>
-<li>文档对象模型（DOM）：<ul>
-<li><strong>是针对XML但是经过拓展，用于HTML的应用程序编程接口，它会把整个页面来映射成多层次的节点结构。页面中的每一个组成部分都是节点，节点又包换不同的数据类型</strong></li>
-<li>DOM级别<ul>
-<li>DOM 1级<ul>
-<li>主要由两个部分组成 DOM核心（DOM Core）和DOM HTML。其中的DOM核心就是映射XML的文档结构，来简化对文档的任意部分的访问和操作。而DOM HTML是针对HTML的操作和方法。</li>
-<li>理解两者：DOM Core是针对XML的，用来操作HTML的时候就会略显乏力，于是就在它的基础上来针对HTML进行拓展，用来专门操作HTML。就有了DOM HTML</li>
-</ul>
-</li>
-<li>DOM 2级<ul>
-<li>在DOM 1级的基础上进行了拓展，引入了一些新的模块，并开始支持CSS。引入了以下新模块：<ul>
-<li>DOM 视图（DOM Views）：定义了不同文档视图的接口</li>
-<li>DOM 事件（DOM Events）：定义了事件和事件处理接口</li>
-<li>DOM遍历和范围 （DOM Traversal and Range）：定义了遍历和操作文档树的接口</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>DOM 3级<ul>
-<li>进一步拓展了DOM ，引入了统一方式加载和保存文档的方式</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li>浏览器对象模型（BOM）<ul>
-<li>根本上说，BOM只处理浏览器窗口和框架，但是习惯把针对浏览器的JavaScript拓展算为BOM的一部分。拓展了一些功能：<ul>
-<li>弹出新的浏览器窗口功能</li>
-<li>移动、缩放、关闭浏览器</li>
-<li><strong>提供浏览器详细信息的 navigator 对象</strong></li>
-<li><strong>提供浏览器所加载页面的详细信息的 location 对象</strong></li>
-<li><strong>提供用户显示器分辨率详细信息的 screen 对象</strong></li>
-<li><strong>对 cookies 的支持</strong></li>
-<li><strong>对 XMLHttpRequest 和IE的 ActiveXObject</strong></li>
-</ul>
-</li>
-</ul>
-</li>
-</ol>
-<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h4><hr>
-<p>JavaScript是一种专门为页面交互而设计的脚本语言，由三个部分组成：</p>
-<ul>
-<li>ECMAScript: 提供核心语言</li>
-<li>DOM：提供访问和操作页面内容的方法和接口</li>
-<li>BOM：提供与浏览器交互的方法和接口</li>
-</ul>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> 高程第一章 </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[FileReader接口]]></title>
       <url>/2016/06/06/HTML5%E7%9A%84FileReader%E6%8E%A5%E5%8F%A3/</url>
       <content type="html"><![CDATA[<h3 id="HTML5的FileReader接口"><a href="#HTML5的FileReader接口" class="headerlink" title="HTML5的FileReader接口"></a><center>HTML5的FileReader接口</center></h3><hr>
@@ -661,6 +550,22 @@
             <tag> javaScript </tag>
             
             <tag> DOM </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[git的实际应用]]></title>
+      <url>/2016/04/03/gitUse/</url>
+      <content type="html"><![CDATA[<h2 id="git的实际应用"><a href="#git的实际应用" class="headerlink" title="git的实际应用"></a>git的实际应用</h2><hr>
+<p>本文主要参考了(廖雪峰的git教程)[<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000]以及自己实际工作中的一些积累" target="_blank" rel="external">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000]以及自己实际工作中的一些积累</a></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> git </tag>
             
         </tags>
         
