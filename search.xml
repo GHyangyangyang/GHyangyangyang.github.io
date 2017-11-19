@@ -556,22 +556,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[git的实际应用]]></title>
-      <url>/2016/04/03/gitUse/</url>
-      <content type="html"><![CDATA[<h2 id="git的实际应用"><a href="#git的实际应用" class="headerlink" title="git的实际应用"></a>git的实际应用</h2><hr>
-<p>本文主要参考了(廖雪峰的git教程)[<a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000]以及自己实际工作中的一些积累" target="_blank" rel="external">https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000]以及自己实际工作中的一些积累</a></p>
-]]></content>
-      
-        
-        <tags>
-            
-            <tag> git </tag>
-            
-        </tags>
-        
-    </entry>
-    
-    <entry>
       <title><![CDATA[git的学习记录]]></title>
       <url>/2016/04/03/git/</url>
       <content type="html"><![CDATA[<h2 id="创建、添加、提交"><a href="#创建、添加、提交" class="headerlink" title="创建、添加、提交"></a>创建、添加、提交</h2><hr>

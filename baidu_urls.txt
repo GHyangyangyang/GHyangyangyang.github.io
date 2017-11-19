@@ -6,7 +6,6 @@ http://www.ityyy.cc/2016/08/01/原型/
 http://www.ityyy.cc/2016/06/06/HTML5的FileReader接口/
 http://www.ityyy.cc/2016/06/06/XMLHttpRequest上传文件实现进度条/
 http://www.ityyy.cc/2016/04/06/javascript-dom/
-http://www.ityyy.cc/2016/04/03/gitUse/
 http://www.ityyy.cc/2016/04/03/git/
 http://www.ityyy.cc/2016/03/22/Ngrok-apache/
 http://www.ityyy.cc/2016/03/05/Hexo/
