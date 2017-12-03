@@ -101,7 +101,7 @@
 <meta property="og:url" content="http://www.ityyy.cc/2017/12/03/jsJudge02/index.html">
 <meta property="og:site_name" content="杨洋洋的个人博客">
 <meta property="og:description" content="js判断是在APP内还是H5很多移动端的项目是用H5打包的APP，H5再用，APP也在用。但是在APP中的一些部分要显示的和H5不一样，于是就要用到了来判断是APP还是H5.">
-<meta property="og:updated_time" content="2017-12-03T07:50:48.715Z">
+<meta property="og:updated_time" content="2017-12-03T08:07:46.104Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js判断是IOSAPP、AndroidAPP、H5">
 <meta name="twitter:description" content="js判断是在APP内还是H5很多移动端的项目是用H5打包的APP，H5再用，APP也在用。但是在APP中的一些部分要显示的和H5不一样，于是就要用到了来判断是APP还是H5.">
@@ -324,18 +324,13 @@
 
       
         <h3 id="js判断是在APP内还是H5"><a href="#js判断是在APP内还是H5" class="headerlink" title="js判断是在APP内还是H5"></a>js判断是在APP内还是H5</h3><p>很多移动端的项目是用H5打包的APP，H5再用，APP也在用。但是在APP中的一些部分要显示的和H5不一样，于是就要用到了来判断是APP还是H5.<br><a id="more"></a></p>
-<ul>
-<li><p>判断是否是在APP内</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断是否是APP</span></div><div class="line"><span class="keyword">var</span> isAPP = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> isIosApp = <span class="regexp">/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i</span>.test(navigator.userAgent);</div><div class="line">    <span class="keyword">var</span> isAndroidApp = <span class="built_in">window</span>.android ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> isIosApp || isAndroidApp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 判断是否是IOSAPP</span></div><div class="line"><span class="keyword">var</span> isIosApp = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> isIosApp = <span class="regexp">/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i</span>.test(navigator.userAgent);</div><div class="line">    <span class="keyword">return</span> isIosApp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 判断是否是安卓APP</span></div><div class="line"><span class="keyword">var</span> isAndroidApp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> isAndroidApp = <span class="built_in">window</span>.android ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> isAndroidApp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>关于判断的问题<br>IOS的判断是通过 <code>navigator.userAgent</code> 来判断的，没有什么问题. 但是安卓的要说一下了。这里就牵扯到了<a href="http://blog.csdn.net/u010106153/article/details/52874056#javascript调用android-native代码" target="_blank" rel="external">Javascript与Android Native的交互</a><br>在打包APP的时候，安卓那边可以通过一个<code>addJavascriptInterface</code>方法来让JS这边可以调用安卓的那边定义的方法(详细请点击上面连接)</p>
+<h4 id="判断是否是在APP内"><a href="#判断是否是在APP内" class="headerlink" title="判断是否是在APP内"></a>判断是否是在APP内</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断是否是APP</span></div><div class="line"><span class="keyword">var</span> isAPP = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> isIosApp = <span class="regexp">/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i</span>.test(navigator.userAgent);</div><div class="line">    <span class="keyword">var</span> isAndroidApp = <span class="built_in">window</span>.android ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> isIosApp || isAndroidApp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 判断是否是IOSAPP</span></div><div class="line"><span class="keyword">var</span> isIosApp = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> isIosApp = <span class="regexp">/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i</span>.test(navigator.userAgent);</div><div class="line">    <span class="keyword">return</span> isIosApp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 判断是否是安卓APP</span></div><div class="line"><span class="keyword">var</span> isAndroidApp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> isAndroidApp = <span class="built_in">window</span>.android ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> isAndroidApp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="关于判断的问题"><a href="#关于判断的问题" class="headerlink" title="关于判断的问题"></a>关于判断的问题</h4><p>IOS的判断是通过 <code>navigator.userAgent</code> 来判断的，没有什么问题. 但是安卓的要说一下了。这里就牵扯到了<a href="http://blog.csdn.net/u010106153/article/details/52874056#javascript调用android-native代码" target="_blank" rel="external">Javascript与Android Native的交互</a><br>在打包APP的时候，安卓那边可以通过一个<code>addJavascriptInterface</code>方法来让JS这边可以调用安卓的那边定义的方法(详细请点击上面连接)</p>
 <pre><code class="js"><span class="comment">// 示例使用 addJavascriptInterface 方法，webView 和 new WebAppInterface 是安卓那边定义的，详情查看上述连接</span>
 <span class="comment">// 这里重点关注后面的 "android"  当然名字可以随便起，只要别重复就行</span>
-webView.addJavascriptInterface(<span class="keyword">new</span> WebAppInterface(<span class="keyword">this</span>), <span class="string">"android"</span>); <span class="comment">//"android"实在JavaScript中调用的名字</span>
+webView.addJavascriptInterface(<span class="keyword">new</span> WebAppInterface(<span class="keyword">this</span>), <span class="string">"android"</span>); <span class="comment">//"android"是在JavaScript中调用的名字</span>
 </code></pre>
 <p>写了上述的一句后，相当于把android挂载了window对象下面，所以，JS这边可以通过检测有没有这个方法来判断是否是在AndroidAPP中。即上面所写的 <code>window.android</code></p>
-</li>
-</ul>
 
       
     </div>
@@ -470,7 +465,7 @@ webView.addJavascriptInterface(<span class="keyword">new</span> WebAppInterface(
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -505,7 +500,7 @@ webView.addJavascriptInterface(<span class="keyword">new</span> WebAppInterface(
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#js判断是在APP内还是H5"><span class="nav-number">1.</span> <span class="nav-text">js判断是在APP内还是H5</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#js判断是在APP内还是H5"><span class="nav-number">1.</span> <span class="nav-text">js判断是在APP内还是H5</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#判断是否是在APP内"><span class="nav-number">1.1.</span> <span class="nav-text">判断是否是在APP内</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关于判断的问题"><span class="nav-number">1.2.</span> <span class="nav-text">关于判断的问题</span></a></li></ol></li></ol></div>
             
 
           </div>
