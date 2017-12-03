@@ -3,6 +3,48 @@
   
     
     <entry>
+      <title><![CDATA[js判断是IOSAPP、AndroidAPP、H5]]></title>
+      <url>/2017/12/03/jsJudge02/</url>
+      <content type="html"><![CDATA[<h3 id="js判断是在APP内还是H5"><a href="#js判断是在APP内还是H5" class="headerlink" title="js判断是在APP内还是H5"></a>js判断是在APP内还是H5</h3><p>很多移动端的项目是用H5打包的APP，H5再用，APP也在用。但是在APP中的一些部分要显示的和H5不一样，于是就要用到了来判断是APP还是H5.<br><a id="more"></a></p>
+<ul>
+<li><p>判断是否是在APP内</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 判断是否是APP</span></div><div class="line"><span class="keyword">var</span> isAPP = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> isIosApp = <span class="regexp">/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i</span>.test(navigator.userAgent);</div><div class="line">    <span class="keyword">var</span> isAndroidApp = <span class="built_in">window</span>.android ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> isIosApp || isAndroidApp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 判断是否是IOSAPP</span></div><div class="line"><span class="keyword">var</span> isIosApp = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> isIosApp = <span class="regexp">/(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i</span>.test(navigator.userAgent);</div><div class="line">    <span class="keyword">return</span> isIosApp;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 判断是否是安卓APP</span></div><div class="line"><span class="keyword">var</span> isAndroidApp = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> isAndroidApp = <span class="built_in">window</span>.android ? <span class="number">1</span> : <span class="number">0</span>;</div><div class="line">    <span class="keyword">return</span> isAndroidApp;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>关于判断的问题<br>IOS的判断是通过 <code>navigator.userAgent</code> 来判断的，没有什么问题. 但是安卓的要说一下了。这里就牵扯到了<a href="http://blog.csdn.net/u010106153/article/details/52874056#javascript调用android-native代码" target="_blank" rel="external">Javascript与Android Native的交互</a><br>在打包APP的时候，安卓那边可以通过一个<code>addJavascriptInterface</code>方法来让JS这边可以调用安卓的那边定义的方法(详细请点击上面连接)</p>
+<pre><code class="js"><span class="comment">// 示例使用 addJavascriptInterface 方法，webView 和 new WebAppInterface 是安卓那边定义的，详情查看上述连接</span>
+<span class="comment">// 这里重点关注后面的 "android"  当然名字可以随便起，只要别重复就行</span>
+webView.addJavascriptInterface(<span class="keyword">new</span> WebAppInterface(<span class="keyword">this</span>), <span class="string">"android"</span>); <span class="comment">//"android"实在JavaScript中调用的名字</span>
+</code></pre>
+<p>写了上述的一句后，相当于把android挂载了window对象下面，所以，JS这边可以通过检测有没有这个方法来判断是否是在AndroidAPP中。即上面所写的 <code>window.android</code></p>
+</li>
+</ul>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> js判断是在APP内还是H5 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[js判断设备]]></title>
+      <url>/2017/12/03/jsJudge01/</url>
+      <content type="html"><![CDATA[<h3 id="通过JS来判断设备和浏览器"><a href="#通过JS来判断设备和浏览器" class="headerlink" title="通过JS来判断设备和浏览器"></a>通过JS来判断设备和浏览器</h3><p>最近用到JS来判断设备，网上找了一大圈，找到一个靠谱点的，记录写一下。出处<a href="http://www.jianshu.com/p/534d0f1340f2" target="_blank" rel="external">点这里</a><br><a id="more"></a><br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> u = navigator.userAgent, app = navigator.appVersion; </div><div class="line">trident: u.indexOf(<span class="string">'Trident'</span>) &gt; <span class="number">-1</span>, <span class="comment">//IE内核 </span></div><div class="line">presto: u.indexOf(<span class="string">'Presto'</span>) &gt; <span class="number">-1</span>, <span class="comment">//opera内核 webKit: </span></div><div class="line">u.indexOf(<span class="string">'AppleWebKit'</span>) &gt; <span class="number">-1</span>, <span class="comment">//苹果、谷歌内核 gecko: </span></div><div class="line">u.indexOf(<span class="string">'Gecko'</span>) &gt; <span class="number">-1</span> &amp;&amp; u.indexOf(<span class="string">'KHTML'</span>) == <span class="number">-1</span>,<span class="comment">//火狐内核 </span></div><div class="line">mobile: !!u.match(<span class="regexp">/AppleWebKit.*Mobile.*/</span>), <span class="comment">//是否为移动终端  </span></div><div class="line">ios: !!u.match(<span class="regexp">/\(i[^;]+;( U;)? CPU.+Mac OS X/</span>), <span class="comment">//ios终端  </span></div><div class="line">android: u.indexOf(<span class="string">'Android'</span>) &gt; <span class="number">-1</span> || u.indexOf(<span class="string">'Adr'</span>) &gt; <span class="number">-1</span>, <span class="comment">//android终端 </span></div><div class="line">iPhone: u.indexOf(<span class="string">'iPhone'</span>) &gt; <span class="number">-1</span> , <span class="comment">//是否为iPhone或者QQHD浏览器 </span></div><div class="line">iPad: u.indexOf(<span class="string">'iPad'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否iPad webApp: </span></div><div class="line">u.indexOf(<span class="string">'Safari'</span>) == <span class="number">-1</span>, <span class="comment">//是否web应该程序，没有头部与底部 </span></div><div class="line">weixin: u.indexOf(<span class="string">'MicroMessenger'</span>) &gt; <span class="number">-1</span>, <span class="comment">//是否微信</span></div><div class="line">qq: u.match(<span class="regexp">/\sQQ/i</span>) == <span class="string">" qq"</span> <span class="comment">//是否QQ</span></div></pre></td></tr></table></figure></p>
+]]></content>
+      
+        
+        <tags>
+            
+            <tag> js判断设备 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[swiper一个页面多个轮播图]]></title>
       <url>/2017/11/08/swiper/</url>
       <content type="html"><![CDATA[<h2 id="swiper一个页面多个轮播图的问题"><a href="#swiper一个页面多个轮播图的问题" class="headerlink" title="swiper一个页面多个轮播图的问题"></a>swiper一个页面多个轮播图的问题</h2><p>前几天项目需要做一个多个轮播图，在tab栏里切换。本来觉得很简单，但是当写完样式的时候，发现多个轮播图有些轮播图会失效。百度了一大圈，发现答案都是一样的，但是用在我身上并不起作用，最后还是在<a href="http://www.swiper.com.cn/api/index.html" target="_blank" rel="external">swiper</a>官网找到了答案！<br><a id="more"></a><br>html部分<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">&lt;!-- 一个页面中引用多个Swiper可以给每个Swiper加上ID或Class区分，要保留默认的类名swiper-container --&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-container"</span> <span class="attr">id</span>=<span class="string">"swiper1"</span>&gt;</span>....</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-container"</span> <span class="attr">id</span>=<span class="string">"swiper2"</span>&gt;</span>....</div><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"swiper-container"</span> <span class="attr">id</span>=<span class="string">"swiper3"</span>&gt;</span>....</div></pre></td></tr></table></figure></p>
